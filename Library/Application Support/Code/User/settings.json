@@ -1,5 +1,6 @@
 {
   "editor.formatOnSave": true,
+  "editor.rulers": [100],
   "editor.codeLens": true,
   "editor.minimap.enabled": false,
   "editor.colorDecorators": false,
@@ -13,6 +14,7 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
   // Theme
+  "editor.bracketPairColorization.enabled": false,
   "workbench.colorTheme": "gruvbox-plain",
   "git-graph.graph.colours": [
     "#b16286",
@@ -68,6 +70,7 @@
   "html.autoClosingTags": false,
   "javascript.autoClosingTags": false,
   "typescript.autoClosingTags": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "[html][css][json][jsonc][yaml][javascript][javascriptreact][typescript][typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -175,6 +178,5 @@
   },
 
   // Misc
-  "diffEditor.ignoreTrimWhitespace": false,
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "diffEditor.ignoreTrimWhitespace": false
 }
