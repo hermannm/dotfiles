@@ -22,16 +22,16 @@ alias dcm1='docker compose -f docker-compose-m1.yml'
 
 # Command to enter Python virtual environment in provided path.
 venv() {
-	venv_path="venv/bin/activate"
-	if [ $# -eq 0 ]
-	then
-		source $venv_path
-	else
-		target_dir="$1"
-		previous_dir=$(pwd)
-		cd $target_dir && source $venv_path
-		cd $previous_dir
-	fi
+    venv_path="venv/bin/activate"
+    if [ $# -eq 0 ]
+    then
+        source $venv_path
+    else
+        target_dir="$1"
+        previous_dir=$(pwd)
+        cd $target_dir && source $venv_path
+        cd $previous_dir
+    fi
 }
 
 # Sets Nano as default editor.
@@ -55,6 +55,9 @@ eval "$(pyenv init --path)"
 # Sets up pipx for running Python packages.
 export PATH="$PATH:/Users/hermannm/.local/bin"
 
+# Adds Go bin to PATH.
+export PATH="$PATH:/Users/hermannm/go/bin"
+
 # Configures Java Home.
 export JAVA_HOME=$(/usr/libexec/java_home)
 
@@ -63,22 +66,22 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 enter_directory() {
-	if [[ $PWD == $PREV_PWD ]]; then
-		return
-	fi
+    if [[ $PWD == $PREV_PWD ]]; then
+        return
+    fi
 
-	if [[ "$PWD" =~ "$PREV_PWD" && ! -f ".nvmrc" ]]; then
-		return
-	fi
+    if [[ "$PWD" =~ "$PREV_PWD" && ! -f ".nvmrc" ]]; then
+        return
+    fi
 
-	PREV_PWD=$PWD
-	if [[ -f ".nvmrc" ]]; then
-		nvm use
-		NVM_DIRTY=true
-	elif [[ $NVM_DIRTY = true ]]; then
-		nvm use default
-		NVM_DIRTY=false
-	fi
+    PREV_PWD=$PWD
+    if [[ -f ".nvmrc" ]]; then
+        nvm use
+        NVM_DIRTY=true
+    elif [[ $NVM_DIRTY = true ]]; then
+        nvm use default
+        NVM_DIRTY=false
+    fi
 }
 export PROMPT_COMMAND=enter_directory
 
