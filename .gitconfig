@@ -1,0 +1,21 @@
+[user]
+	name = hermannm
+	email = hermann.morkrid@gmail.com
+
+[core]
+    editor = nano
+    defaultBranch = main
+
+# Sets up Git Credential Manager for connecting to GitHub with a Personal Access Token.
+# Included in Git for Windows: https://gitforwindows.org/
+[credential]
+    helper = C:\\Program Files\\Git\\mingw64\\bin\\git-credential-manager-core.exe
+
+# Sets up GPG signing of commits.
+# - Download gpg4win here: https://gpg4win.org/
+# - Make key, and set it like this: sudo git config --system user.signingkey [SIGNING-KEY]
+# - Add the key to GitHub.
+[commit]
+	gpgsign = true
+[gpg]
+	program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
