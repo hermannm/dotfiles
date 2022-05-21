@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Runs the NVM install script, without changing profile.
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | PROFILE=/dev/null bash
