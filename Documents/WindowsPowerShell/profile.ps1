@@ -20,7 +20,6 @@ function Prompt {
 }
 
 # Utility function for handling dotfiles with Git.
-function Git-Dotfiles {
+function dotfiles {
     git --git-dir="$HOME/dotfiles" --work-tree="$HOME" $args
 }
-Set-Alias -Name dotfiles -Value Git-Dotfiles
