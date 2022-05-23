@@ -12,7 +12,8 @@
       "font": {
         "face": "Cascadia Mono",
         "size": 11
-      }
+      },
+      "bellStyle": "none"
     },
     "list": [
       {
