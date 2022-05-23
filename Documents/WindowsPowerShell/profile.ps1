@@ -1,7 +1,7 @@
 Remove-Module PSReadline
 
 # Customizes the prompt.
-function Prompt {
+function prompt {
     $color = [char]27
 
     $path = switch -Wildcard ($executionContext.SessionState.Path.CurrentLocation.Path) {
@@ -13,10 +13,10 @@ function Prompt {
     $branch = git branch --show-current
     $branchString = ""
     if ($branch) {
-        $branchString = "$color[37m/$color[1;33m$branch"
+        $branchString = "$color[1;37m:$color[1;33m$branch"
     }
 
-    return "$color[1;34m$path$branchString$color[37m: "
+    return "$color[1;34m$path$branchString$color[1;37m: "
 }
 
 # Utility function for handling dotfiles with Git.
