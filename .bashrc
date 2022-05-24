@@ -36,12 +36,12 @@ if [ "$color_prompt" = yes ]; then
   PS1='${debian_chroot:+($debian_chroot)}\[\033[1;32m\]\w`
     if [ $(parse_git_branch) ]; then
       echo "\[\033[0;37m\]:\[\033[1;33m\]$(parse_git_branch)"
-    fi`\[\033[0;37m\]:\[\033[00m\] '
+    fi`\[\033[0;37m\]$\[\033[00m\] '
 else
   PS1='${debian_chroot:+($debian_chroot)}\w`
     if [ $(parse_git_branch) ]; then
       echo ":$(parse_git_branch)"
-    fi`: '
+    fi`$ '
 fi
 unset color_prompt
 
