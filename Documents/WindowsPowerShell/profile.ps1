@@ -1,4 +1,5 @@
-Remove-Module PSReadline
+# Removes colorized command highlighting.
+remove-module PSReadline
 
 # Customizes the prompt.
 function prompt {
@@ -13,10 +14,10 @@ function prompt {
     $branch = git branch --show-current
     $branchString = ""
     if ($branch) {
-        $branchString = "$color[1;37m:$color[1;33m$branch"
+        $branchString = "$color[37m:$color[1;33m$branch"
     }
 
-    return "$color[1;34m$path$branchString$color[1;37m: "
+    return "$color[1;34m$path$branchString$color[37m$ "
 }
 
 # Utility function for handling dotfiles with Git.
