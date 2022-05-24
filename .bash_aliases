@@ -12,6 +12,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Alias for git management of dotfiles.
 alias dotfiles='git --git-dir="$HOME/dotfiles" --work-tree="$HOME"'
+alias dotfiles-ls='dotfiles ls-tree main -r --name-only'
 
 # Alias for opening VSCode workspaces.
 alias codew='code web.code-workspace'
