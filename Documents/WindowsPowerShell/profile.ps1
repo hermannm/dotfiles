@@ -23,3 +23,8 @@ function prompt {
 function dotfiles {
     git --git-dir="$HOME/dotfiles" --work-tree="$HOME" $args
 }
+
+# Utility function for viewing dotfiles added to Git.
+function dotfiles-ls {
+    dotfiles ls-tree windows -r --name-only
+}
