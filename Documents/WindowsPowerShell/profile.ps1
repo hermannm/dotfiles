@@ -17,7 +17,7 @@ function prompt {
         $branchString = "$color[37m:$color[1;33m$branch"
     }
 
-    return "$color[1;34m$path$branchString$color[37m$ "
+    return "$color[1;34m$path$branchString$color[37m`$$color[00m "
 }
 
 # Utility function for handling dotfiles with Git.
