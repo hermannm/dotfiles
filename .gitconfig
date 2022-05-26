@@ -4,6 +4,8 @@
 
 [core]
     editor = nano
+
+[init]
     defaultBranch = main
 
 # Sets up Git Credential Manager for connecting to GitHub with a Personal Access Token.
