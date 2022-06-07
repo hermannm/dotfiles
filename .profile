@@ -21,7 +21,7 @@ export VISUAL="$EDITOR"
 export GPG_TTY=$(tty)
 
 # Adds Go to PATH.
-export PATH="/usr/local/go/bin:$PATH"
+export PATH="/usr/local/go/bin:$HOME/go/bin:$PATH"
 
 # Initializes Node Version Manager.
 export NVM_DIR="$HOME/.nvm"
