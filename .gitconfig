@@ -15,8 +15,8 @@
 
 # Sets up GPG signing of commits.
 # - Download gpg4win here: https://gpg4win.org/
-# - Make key, and set it like this: sudo git config --system user.signingkey [SIGNING-KEY]
-# - Add the key to GitHub.
+# - Add certificate to Kleopatra
+# - Get the key ID, and set it like this (as admin): git config --system user.signingkey [KEY-ID]
 [commit]
 	gpgsign = true
 [gpg]
