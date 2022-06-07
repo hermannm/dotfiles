@@ -54,6 +54,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Starts GPG agent.
+eval $(gpg-agent --daemon &> /dev/null)
+
 # Loads aliases.
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
