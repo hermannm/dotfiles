@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Updates APT package list.
+sudo apt-get update
+
 # Installs pyenv dependencies.
 sudo apt-get install \
 python3-pip make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev
