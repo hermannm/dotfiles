@@ -10,6 +10,12 @@ Clone as a bare git repo in your `$HOME` directory:
 git clone --bare https://github.com/hermannm/dotfiles.git $HOME/dotfiles
 ```
 
+Then checkout the repo contents, overwriting existing config under `$HOME`:
+
+```
+git --git-dir="$HOME/dotfiles" --work-tree="$HOME" checkout -f
+```
+
 This provides the `dotfiles` command for managing the bare repo, using `$HOME` as its working directory. To hide untracked files from `$HOME`, run the following:
 
 ```
