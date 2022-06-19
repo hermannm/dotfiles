@@ -12,10 +12,12 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# Configures autosuggestions for zsh.
-source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
-ZSH_AUTOSUGGEST_STRATEGY="completion"
-bindkey '^I' autosuggest-accept
+# Configures autosuggestions for zsh, if it's installed.
+if [ -d "${HOME}/.zsh/zsh-autosuggestions" ] ; then
+    source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    ZSH_AUTOSUGGEST_STRATEGY="completion"
+    bindkey '^I' autosuggest-accept
+fi
 
 # Aliases ls to always color directories.
 alias ls='ls --color=auto'
@@ -33,60 +35,60 @@ alias dc='docker compose'
 # Command to enter Python virtual environment in provided path.
 venv() {
     venv_path="venv/bin/activate"
-    if [ $# -eq 0 ]
+    if [ ${#} -eq 0 ]
     then
-        source $venv_path
+        source ${venv_path}
     else
-        target_dir="$1"
+        target_dir="${1}"
         previous_dir=$(pwd)
-        cd $target_dir && source $venv_path
-        cd $previous_dir
+        cd ${target_dir} && source ${venv_path}
+        cd ${previous_dir}
     fi
 }
 
 # Sets PATH to include private bin, if it exists.
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+if [ -d "${HOME}/bin" ] ; then
+    PATH="${HOME}/bin:${PATH}"
 fi
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+if [ -d "${HOME}/.local/bin" ] ; then
+    PATH="${HOME}/.local/bin:${PATH}"
 fi
 
 # Sets Nano as default editor.
 export EDITOR=nano
-export VISUAL="$EDITOR"
+export VISUAL="${EDITOR}"
 
 # Sets up GPG signing.
 export GPG_TTY=$(tty)
 
 # Adds Go to PATH.
-export PATH="/usr/local/go/bin:$HOME/go/bin:$PATH"
+export PATH="/usr/local/go/bin:${HOME}/go/bin:${PATH}"
 
 # Initializes Python environment.
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH="${PYENV_ROOT}/bin:${PATH}"
 eval "$(pyenv init --path)"
 
 # Initializes Node Version Manager.
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+export NVM_DIR="${HOME}/.nvm"
+[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"
+[ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"
 
 # Auto-detects Node version on directory change.
 enter_directory() {
-    if [[ $PWD == $PREV_PWD ]]; then
+    if [[ ${PWD} == ${PREV_PWD} ]]; then
         return
     fi
 
-    if [[ "$PWD" =~ "$PREV_PWD" && ! -f ".nvmrc" ]]; then
+    if [[ "${PWD}" =~ "${PREV_PWD}" && ! -f ".nvmrc" ]]; then
         return
     fi
 
-    PREV_PWD=$PWD
+    PREV_PWD=${PWD}
     if [[ -f ".nvmrc" ]]; then
         nvm use
         NVM_DIRTY=true
-    elif [[ $NVM_DIRTY = true ]]; then
+    elif [[ ${NVM_DIRTY} = true ]]; then
         nvm use default
         NVM_DIRTY=false
     fi
