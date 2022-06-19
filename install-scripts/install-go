@@ -5,16 +5,16 @@ if [ -z "${1}" ]; then
     echo "Please provide Go version."
     exit 1
 fi
-VERSION="${1}"
+version="${1}"
 
 # Assumes platform, as this script is made for WSL Ubuntu.
-PLATFORM="linux-amd64"
+platform="linux-amd64"
 
 # Downloads Go tarball to temporary directory.
-PACKAGE_NAME="go${VERSION}.${PLATFORM}.tar.gz"
-DOWNLOAD_LOCATION="$(mktemp -d)/go.tar.gz"
-echo "Downloading ${PACKAGE_NAME}..."
-curl -o "${DOWNLOAD_LOCATION}" "https://dl.google.com/go/${PACKAGE_NAME}"
+package_name="go${version}.${platform}.tar.gz"
+download_location="$(mktemp -d)/go.tar.gz"
+echo "Downloading ${package_name}..."
+curl -o "${download_location}" "https://dl.google.com/go/${package_name}"
 
 # Checks that download succeeded.
 if [ ${?} -ne 0 ]; then
@@ -23,21 +23,21 @@ if [ ${?} -ne 0 ]; then
 fi
 
 # Sets directory where Go is installed.
-INSTALL_LOCATION="/usr/local"
+install_location="/usr/local"
 
 # Removes previous Go installation, if any.
-rm -rf "${INSTALL_LOCATION}/go"
+rm -rf "${install_location}/go"
 
 # Unpacks the downloaded tarball, then deletes it.
-sudo tar -C "${INSTALL_LOCATION}" -xzf "${DOWNLOAD_LOCATION}"
-INSTALLATION_STATUS=${?}
-rm -f "${DOWNLOAD_LOCATION}"
+sudo tar -C "${install_location}" -xzf "${download_location}"
+installation_status=${?}
+rm -f "${download_location}"
 
 # Checks that installation succeeded.
-if [ "${INSTALLATION_STATUS}" -ne 0 ]; then
+if [ "${installation_status}" -ne 0 ]; then
     echo "Installation failed."
     exit 1
 fi
 
-echo "Installed Go ${VERSION} in ${INSTALL_LOCATION}/go."
+echo "Installed Go ${version} in ${install_location}/go."
 exit 0

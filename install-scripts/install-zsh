@@ -5,14 +5,14 @@ if [ -z "${1}" ]; then
     echo "Please provide zsh version."
     exit 1
 fi
-VERSION="${1}"
+version="${1}"
 
 # Downloads zsh tarball to temporary directory.
-PACKAGE_NAME="zsh-${VERSION}.tar.gz"
-TEMP_DIR="$(mktemp -d)"
-DOWNLOAD_LOCATION="${TEMP_DIR}/zsh-${VERSION}.tar.gz"
-echo "Downloading ${PACKAGE_NAME}..."
-curl -o "${DOWNLOAD_LOCATION}" -L "https://sourceforge.net/projects/zsh/files/zsh/${VERSION}/zsh-${VERSION}.tar.xz/download"
+package_name="zsh-${version}.tar.xz"
+temp_dir="$(mktemp -d)"
+download_location="${temp_dir}/${package_name}"
+echo "Downloading ${package_name}..."
+curl -o "${download_location}" -L "https://sourceforge.net/projects/zsh/files/zsh/${version}/${package_name}/download"
 
 # Checks that download succeeded.
 if [ ${?} -ne 0 ]; then
@@ -21,33 +21,33 @@ if [ ${?} -ne 0 ]; then
 fi
 
 # Unpacks the downloaded tarball, then deletes it.
-tar -C "${TEMP_DIR}" -xf "${DOWNLOAD_LOCATION}"
-UNPACK_STATUS=${?}
-rm -f "${DOWNLOAD_LOCATION}"
+tar -C "${temp_dir}" -xf "${download_location}"
+unpack_status=${?}
+rm -f "${download_location}"
 
 # Checks that unpacking succeeded.
-if [ "${UNPACK_STATUS}" -ne 0 ]; then
+if [ "${unpack_status}" -ne 0 ]; then
     echo "Unpacking failed."
     exit 1
 fi
 
 # Installs zsh from unpacked files.
-UNPACK_LOCATION="${TEMP_DIR}/zsh-${VERSION}"
-pushd "${UNPACK_LOCATION}"
-./configure && make && make test && sudo make install
-INSTALLATION_STATUS=${?}
-popd
-rm -rf "${UNPACK_LOCATION}"
+unpack_location="${temp_dir}/zsh-${version}"
+previous_dir=$(pwd)
+cd "${unpack_location}" && ./configure && make && make test && sudo make install
+installation_status=${?}
+cd previous_dir
+rm -rf "${unpack_location}"
 
 # Checks that installation succeeded.
-if [ "${INSTALLATION_STATUS}" -ne 0 ]; then
+if [ "${installation_status}" -ne 0 ]; then
     echo "Installation failed."
     exit 1
 fi
 
 # Sets zsh as default shell.
-ZSH_LOCATION="$(command -v zsh)"
-"${ZSH_LOCATION}" | sudo tee -a /etc/shells && chsh -s "${ZSH_LOCATION}"
+zsh_location="$(command -v zsh)"
+"${zsh_location}" | sudo tee -a /etc/shells && chsh -s "${zsh_location}"
 if [ "${?}" -ne 0 ]; then
     echo "zsh installation succeeded, but failed to set it as default shell."
     exit 1
@@ -56,5 +56,5 @@ fi
 # Installs zsh-autosuggestions.
 git clone https://github.com/zsh-users/zsh-autosuggestions "${HOME}/.zsh/zsh-autosuggestions"
 
-echo "Installed zsh-${VERSION} and set it as default shell."
+echo "Installed zsh-${version} and set it as default shell."
 exit 0
