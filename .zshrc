@@ -22,6 +22,17 @@ fi
 # Aliases ls to always color directories.
 alias ls='ls --color=auto'
 
+# git utility aliases.
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gch='git checkout'
+alias gl='git log'
+alias gpl='git pull'
+alias gps='git push'
+alias gr='git reset'
+alias gs='git status'
+
 # Aliases for git management of dotfiles.
 alias dotfiles='git --git-dir="$HOME/dotfiles" --work-tree="$HOME"'
 alias dotfiles-ls='dotfiles ls-tree main -r --name-only'
