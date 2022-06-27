@@ -1,0 +1,75 @@
+# Aliases ls to always color directories.
+alias ls='ls --color=auto'
+
+# Short-form for Docker Compose. Overwrites built-in dc command.
+alias dc='docker compose'
+
+# git utility aliases.
+alias g='git'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gcam='git commit -a -m'
+alias gco='git checkout'
+alias gcom='git checkout $(git_main_branch)'
+alias gl='git pull'
+alias glom='git pull origin $(git_main_branch)'
+alias glg='git log'
+alias gp='git push'
+alias gr='git reset'
+alias gs='git status -s'
+alias gst='git stash'
+alias gsta='git stash apply'
+
+# Aliases for git management of dotfiles.
+alias dotfiles='git --git-dir="$HOME/dotfiles" --work-tree="$HOME"'
+alias dotfiles-ls='dotfiles ls-tree main -r --name-only'
+
+# Returns main/master branch depending on repo.
+git_main_branch() {
+    command git rev-parse --git-dir &>/dev/null || return
+    local ref
+    for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk}; do
+        if command git show-ref -q --verify $ref; then
+            echo ${ref:t}
+            return
+        fi
+    done
+    echo master
+}
+
+# Enters Python virtual environment in provided path.
+venv() {
+    venv_path="venv/bin/activate"
+    if [ ${#} -eq 0 ]
+    then
+        source ${venv_path}
+    else
+        target_dir="${1}"
+        previous_dir=$(pwd)
+        cd ${target_dir} && source ${venv_path}
+        cd ${previous_dir}
+    fi
+}
+
+# Auto-detects Node version on directory change.
+enter_directory() {
+    if [[ ${PWD} == ${PREV_PWD} ]]; then
+        return
+    fi
+
+    if [[ "${PWD}" =~ "${PREV_PWD}" && ! -f ".nvmrc" ]]; then
+        return
+    fi
+
+    PREV_PWD=${PWD}
+    if [[ -f ".nvmrc" ]]; then
+        nvm use
+        NVM_DIRTY=true
+    elif [[ ${NVM_DIRTY} = true ]]; then
+        nvm use default
+        NVM_DIRTY=false
+    fi
+}
+export PROMPT_COMMAND=enter_directory

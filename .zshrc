@@ -19,44 +19,6 @@ if [ -d "${HOME}/.zsh/zsh-autosuggestions" ] ; then
     bindkey '^I' autosuggest-accept
 fi
 
-# Aliases ls to always color directories.
-alias ls='ls --color=auto'
-
-# git utility aliases.
-alias ga='git add'
-alias gb='git branch'
-alias gc='git commit'
-alias gch='git checkout'
-alias gl='git log'
-alias gpl='git pull'
-alias gps='git push'
-alias gr='git reset'
-alias gs='git status'
-
-# Aliases for git management of dotfiles.
-alias dotfiles='git --git-dir="$HOME/dotfiles" --work-tree="$HOME"'
-alias dotfiles-ls='dotfiles ls-tree main -r --name-only'
-
-# Alias for opening VSCode workspaces.
-alias codew='code web.code-workspace'
-
-# Short-form for Docker Compose. Overwrites built-in dc command.
-alias dc='docker compose'
-
-# Command to enter Python virtual environment in provided path.
-venv() {
-    venv_path="venv/bin/activate"
-    if [ ${#} -eq 0 ]
-    then
-        source ${venv_path}
-    else
-        target_dir="${1}"
-        previous_dir=$(pwd)
-        cd ${target_dir} && source ${venv_path}
-        cd ${previous_dir}
-    fi
-}
-
 # Sets PATH to include private bin, if it exists.
 if [ -d "${HOME}/bin" ] ; then
     PATH="${HOME}/bin:${PATH}"
@@ -85,23 +47,7 @@ export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"
 [ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"
 
-# Auto-detects Node version on directory change.
-enter_directory() {
-    if [[ ${PWD} == ${PREV_PWD} ]]; then
-        return
-    fi
-
-    if [[ "${PWD}" =~ "${PREV_PWD}" && ! -f ".nvmrc" ]]; then
-        return
-    fi
-
-    PREV_PWD=${PWD}
-    if [[ -f ".nvmrc" ]]; then
-        nvm use
-        NVM_DIRTY=true
-    elif [[ ${NVM_DIRTY} = true ]]; then
-        nvm use default
-        NVM_DIRTY=false
-    fi
-}
-export PROMPT_COMMAND=enter_directory
+# Loads aliases.
+if [ -f ~/.zsh_aliases ]; then
+    source ~/.zsh_aliases
+fi
