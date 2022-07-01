@@ -23,7 +23,7 @@ alias gp='git push'
 alias gpo='git push -u origin $(git_current_branch)'
 alias gr='git reset'
 alias gro='git reset --hard origin/$(git_current_branch)'
-alias gs='git -c color.ui=always status -sb | ~/util-scripts/sort-git-status.py'
+alias gs='git -c color.ui=always status -sb | $HOME/util-scripts/sort-git-status.py'
 alias gst='git stash'
 alias gsta='git stash apply'
 
