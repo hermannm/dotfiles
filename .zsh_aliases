@@ -8,36 +8,28 @@ alias dc='docker compose'
 alias g='git'
 alias ga='git add'
 alias gb='git branch'
+alias gbd='git branch -d'
+alias gbdd='git branch -D'
 alias gc='git commit'
 alias gcm='git commit -m'
-alias gcam='git commit -a -m'
+alias gcam='git add . && git commit -a -m'
+alias gcan='git commit --amend --no-edit'
 alias gco='git checkout'
 alias gcom='git checkout $(git_main_branch)'
 alias gl='git pull'
 alias glom='git pull origin $(git_main_branch)'
 alias glg='git log'
 alias gp='git push'
+alias gpo='git push -u origin $(git_current_branch)'
 alias gr='git reset'
-alias gs='git status -s'
+alias gro='git reset --hard origin/$(git_current_branch)'
+alias gs='git -c color.ui=always status -sb | ~/util-scripts/sort-git-status.py'
 alias gst='git stash'
 alias gsta='git stash apply'
 
 # Aliases for git management of dotfiles.
 alias dotfiles='git --git-dir="$HOME/dotfiles" --work-tree="$HOME"'
 alias dotfiles-ls='dotfiles ls-tree main -r --name-only'
-
-# Returns main/master branch depending on repo.
-git_main_branch() {
-    command git rev-parse --git-dir &>/dev/null || return
-    local ref
-    for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk}; do
-        if command git show-ref -q --verify $ref; then
-            echo ${ref:t}
-            return
-        fi
-    done
-    echo master
-}
 
 # Enters Python virtual environment in provided path.
 venv() {
@@ -73,3 +65,31 @@ enter_directory() {
     fi
 }
 export PROMPT_COMMAND=enter_directory
+
+# Echoes main/master branch depending on repo.
+git_main_branch() {
+    command git rev-parse --git-dir &>/dev/null || return
+    local ref
+    for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk}; do
+        if command git show-ref -q --verify $ref; then
+            echo ${ref:t}
+            return
+        fi
+    done
+    echo master
+}
+
+# Echoes the current git branch.
+git_current_branch() {
+    local ref
+    ref=$(__git_prompt_git symbolic-ref --quiet HEAD 2> /dev/null)
+    local ret=$?
+    if [[ $ret != 0 ]]; then
+        [[ $ret == 128 ]] && return  # no git repo.
+        ref=$(__git_prompt_git rev-parse --short HEAD 2> /dev/null) || return
+    fi
+    echo ${ref#refs/heads/}
+}
+__git_prompt_git() {
+  GIT_OPTIONAL_LOCKS=0 command git "$@"
+}
