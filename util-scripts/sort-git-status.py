@@ -24,14 +24,4 @@ def make_order_dict() -> dict[str, int]:
 order = make_order_dict()
 ansi_re = re.compile(r"\x1b[^m]*m")
 
-print(
-    "".join(
-        sorted(
-            sys.stdin.readlines(),
-            key=lambda line: order.get(
-                ansi_re.sub("", line)[0:2],
-                0,
-            ),
-        )
-    )
-)
+print("".join(sorted(sys.stdin.readlines(), key=lambda line: order.get(ansi_re.sub("", line)[0:2], 0))))
