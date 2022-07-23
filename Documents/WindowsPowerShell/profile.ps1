@@ -14,7 +14,7 @@ function prompt {
     $branch = git branch --show-current
     $branchString = ""
     if ($branch) {
-        $branchString = "$color[37m:$color[1;33m$branch"
+        $branchString = "$color[37m:$color[1;35m$branch"
     }
 
     return "$color[1;34m$path$branchString$color[37m`$$color[00m "
