@@ -2,9 +2,9 @@
 autoload -U colors && colors
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%F{white}:%F{yellow}%b'
+zstyle ':vcs_info:git:*' formats '%F{white}:%F{magenta}%b'
 setopt PROMPT_SUBST
-PROMPT='%F{green}${PWD/#$HOME/~}${vcs_info_msg_0_}%F{white}\$%{$reset_color%} '
+PROMPT='%F{blue}${PWD/#$HOME/~}${vcs_info_msg_0_}%F{white}\$%{$reset_color%} '
 
 # Configures shell history.
 setopt histignorealldups sharehistory
