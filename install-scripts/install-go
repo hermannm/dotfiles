@@ -26,12 +26,12 @@ fi
 install_location="/usr/local"
 
 # Removes previous Go installation, if any.
-rm -rf "${install_location}/go"
+sudo rm -rf "${install_location}/go"
 
 # Unpacks the downloaded tarball, then deletes it.
 sudo tar -C "${install_location}" -xzf "${download_location}"
 installation_status=${?}
-rm -f "${download_location}"
+sudo rm -f "${download_location}"
 
 # Checks that installation succeeded.
 if [ "${installation_status}" -ne 0 ]; then
