@@ -1,0 +1,4 @@
+[wsl2]
+
+# Increases vm.max_map_count in WSL, required to run services like ElasticSearch.
+kernelCommandLine = "sysctl.vm.max_map_count=262144"
