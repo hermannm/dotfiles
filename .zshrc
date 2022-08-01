@@ -1,3 +1,6 @@
+# Sets terminal title to the currently running program.
+echo -ne "\033]1;$0\a"
+
 # Sets up the prompt with git branch name.
 autoload -U colors && colors
 autoload -Uz vcs_info
