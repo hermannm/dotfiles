@@ -21,8 +21,8 @@ grh() { git reset --hard origin/$(git_current_branch) "$@"; }
 gs() { git -c color.ui=always status -sb | $HOME/util-scripts/sort-git-status.py "$@"; }
 
 # Utilities for git management of dotfiles.
-dotfiles() { git --git-dir="$HOME/dotfiles" --work-tree="$HOME" "$@"; }
-dotfiles-ls() { dotfiles ls-tree main -r --name-only; }
+dotfiles() { GIT_DIR="$HOME/dotfiles" GIT_WORK_TREE="$HOME" "$@"; }
+dotfiles-ls() { dotfiles git ls-tree main -r --name-only; }
 
 # Echoes main/master branch depending on repo.
 git_main_branch() {

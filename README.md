@@ -19,7 +19,7 @@ git --git-dir="$HOME/dotfiles" --work-tree="$HOME" checkout -f
 This provides the `dotfiles` command for managing the bare repo, using `$HOME` as its working directory. To hide untracked files from `$HOME`, run the following:
 
 ```
-dotfiles config --local status.showUntrackedFiles no
+dotfiles git config --local status.showUntrackedFiles no
 ```
 
 ## Platforms
