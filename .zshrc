@@ -50,7 +50,7 @@ export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"
 [ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"
 
-# Loads aliases.
-if [ -f ~/.zsh_aliases ]; then
-    source ~/.zsh_aliases
+# Loads utility functions.
+if [ -f ~/.zsh_utils ]; then
+    source ~/.zsh_utils
 fi
