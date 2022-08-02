@@ -1,29 +1,53 @@
-# Aliases ls to always color directories.
-alias ls='ls --color=auto'
+# Sets ls to always color directories.
+ls() { ls --color=auto "$@"; }
 
 # Short-form for Docker Compose. Overwrites built-in dc command.
-alias dc='docker compose'
+dc() { docker compose "$@"; }
 
-# git utility aliases.
-alias g='git'
-alias ga='git add'
-alias gb='git branch'
-alias gc='git commit'
-alias gca='git add . && git commit -a'
-alias gch='git checkout'
-alias gchm='git checkout $(git_main_branch)'
-alias gpl='git pull'
-alias gplom='git pull origin $(git_main_branch)'
-alias glg='git log'
-alias gps='git push'
-alias gpsu='git push -u origin $(git_current_branch)'
-alias grh='git reset --hard origin/$(git_current_branch)'
-alias gs='git -c color.ui=always status -sb | $HOME/util-scripts/sort-git-status.py'
-alias gsh='git stash'
+# Short-forms for common git operations.
+g() { git "$@"; }
+ga() { git add "$@"; }
+gb() { git branch "$@"; }
+gc() { git commit "$@"; }
+gca() { git add . && git commit "$@"; }
+gch() { git checkout "$@"; }
+gchm() { git checkout $(git_main_branch) "$@"; }
+gl() { git log --oneline "$@"; }
+gpl() { git pull  "$@"; }
+gplom() { git pull origin $(git_main_branch) "$@"; }
+gps() { git push "$@"; }
+gpsu() { git push -u origin $(git_current_branch) "$@"; }
+grh() { git reset --hard origin/$(git_current_branch) "$@"; }
+gs() { git -c color.ui=always status -sb | $HOME/util-scripts/sort-git-status.py "$@"; }
 
-# Aliases for git management of dotfiles.
-alias dotfiles='git --git-dir="$HOME/dotfiles" --work-tree="$HOME"'
-alias dotfiles-ls='dotfiles ls-tree main -r --name-only'
+# Utilities for git management of dotfiles.
+dotfiles() { git --git-dir="$HOME/dotfiles" --work-tree="$HOME" "$@"; }
+dotfiles-ls() { dotfiles ls-tree main -r --name-only; }
+
+# Echoes main/master branch depending on repo.
+git_main_branch() {
+    command git rev-parse --git-dir &>/dev/null || return
+    local ref
+    for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk}; do
+        if command git show-ref -q --verify $ref; then
+            echo ${ref:t}
+            return
+        fi
+    done
+    echo master
+}
+
+# Echoes the current git branch.
+git_current_branch() {
+    local ref
+    ref=$(GIT_OPTIONAL_LOCKS=0 command git symbolic-ref --quiet HEAD 2> /dev/null)
+    local ret=$?
+    if [[ $ret != 0 ]]; then
+        [[ $ret == 128 ]] && return  # No git repo.
+        ref=$(GIT_OPTIONAL_LOCKS=0 command git rev-parse --short HEAD 2> /dev/null) || return
+    fi
+    echo ${ref#refs/heads/}
+}
 
 # Enters Python virtual environment in provided path.
 venv() {
@@ -59,31 +83,3 @@ enter_directory() {
     fi
 }
 export PROMPT_COMMAND=enter_directory
-
-# Echoes main/master branch depending on repo.
-git_main_branch() {
-    command git rev-parse --git-dir &>/dev/null || return
-    local ref
-    for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk}; do
-        if command git show-ref -q --verify $ref; then
-            echo ${ref:t}
-            return
-        fi
-    done
-    echo master
-}
-
-# Echoes the current git branch.
-git_current_branch() {
-    local ref
-    ref=$(__git_prompt_git symbolic-ref --quiet HEAD 2> /dev/null)
-    local ret=$?
-    if [[ $ret != 0 ]]; then
-        [[ $ret == 128 ]] && return  # no git repo.
-        ref=$(__git_prompt_git rev-parse --short HEAD 2> /dev/null) || return
-    fi
-    echo ${ref#refs/heads/}
-}
-__git_prompt_git() {
-  GIT_OPTIONAL_LOCKS=0 command git "$@"
-}
