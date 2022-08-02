@@ -11,13 +11,13 @@ gb() { git branch "$@"; }
 gc() { git commit "$@"; }
 gca() { git add . && git commit "$@"; }
 gch() { git checkout "$@"; }
-gchm() { git checkout $(git_main_branch) "$@"; }
+gchm() { git checkout $(git-main-branch) "$@"; }
 gl() { git log --oneline "$@"; }
 gpl() { git pull  "$@"; }
-gplom() { git pull origin $(git_main_branch) "$@"; }
+gplom() { git pull origin $(git-main-branch) "$@"; }
 gps() { git push "$@"; }
-gpsu() { git push -u origin $(git_current_branch) "$@"; }
-grh() { git reset --hard origin/$(git_current_branch) "$@"; }
+gpsu() { git push -u origin $(git-current-branch) "$@"; }
+grh() { git reset --hard origin/$(git-current-branch) "$@"; }
 gs() { git -c color.ui=always status -sb | $HOME/util-scripts/sort-git-status.py "$@"; }
 
 # Utilities for git management of dotfiles.
@@ -25,7 +25,7 @@ dotfiles() { GIT_DIR="$HOME/dotfiles" GIT_WORK_TREE="$HOME" "$@"; }
 dotfiles-ls() { dotfiles git ls-tree main -r --name-only; }
 
 # Echoes main/master branch depending on repo.
-git_main_branch() {
+git-main-branch() {
     command git rev-parse --git-dir &>/dev/null || return
     local ref
     for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk}; do
@@ -38,7 +38,7 @@ git_main_branch() {
 }
 
 # Echoes the current git branch.
-git_current_branch() {
+git-current-branch() {
     local ref
     ref=$(GIT_OPTIONAL_LOCKS=0 command git symbolic-ref --quiet HEAD 2> /dev/null)
     local ret=$?
@@ -64,7 +64,7 @@ venv() {
 }
 
 # Auto-detects Node version on directory change.
-enter_directory() {
+enter-directory() {
     if [[ ${PWD} == ${PREV_PWD} ]]; then
         return
     fi
@@ -82,4 +82,4 @@ enter_directory() {
         NVM_DIRTY=false
     fi
 }
-export PROMPT_COMMAND=enter_directory
+export PROMPT_COMMAND=enter-directory
