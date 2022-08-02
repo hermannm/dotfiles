@@ -63,8 +63,8 @@ venv() {
     fi
 }
 
-# Auto-detects Node version on directory change.
-enter-directory() {
+# Auto-detects Node.js version on directory change.
+detect-node-version() {
     if [[ ${PWD} == ${PREV_PWD} ]]; then
         return
     fi
@@ -82,4 +82,4 @@ enter-directory() {
         NVM_DIRTY=false
     fi
 }
-export PROMPT_COMMAND=enter-directory
+export PROMPT_COMMAND=detect-node-version
