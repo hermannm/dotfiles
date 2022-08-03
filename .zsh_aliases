@@ -31,36 +31,28 @@ alias df-gps='df-g push'
 alias df-gs='df-g -c color.ui=always status -sb | $HOME/util-scripts/sort-git-status.py'
 alias df-ls='df-g ls-tree main -r --name-only'
 
+# Echoes the current git branch.
+git-current-branch() { git branch --show-current ; }
+
 # Echoes main/master branch depending on repo.
 git-main-branch() {
-    command git rev-parse --git-dir &>/dev/null || return
-    local ref
-    for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk}; do
-        if command git show-ref -q --verify $ref; then
-            echo ${ref:t}
+    git rev-parse --git-dir &>/dev/null || return
+
+    main_refs=("refs/heads/main" "refs/remotes/origin/main")
+    for ref in $main_refs; do
+        if git show-ref -q --verify $ref; then
+            echo "main"
             return
         fi
     done
-    echo master
-}
 
-# Echoes the current git branch.
-git-current-branch() {
-    local ref
-    ref=$(GIT_OPTIONAL_LOCKS=0 command git symbolic-ref --quiet HEAD 2> /dev/null)
-    local ret=$?
-    if [[ $ret != 0 ]]; then
-        [[ $ret == 128 ]] && return  # No git repo.
-        ref=$(GIT_OPTIONAL_LOCKS=0 command git rev-parse --short HEAD 2> /dev/null) || return
-    fi
-    echo ${ref#refs/heads/}
+    echo "master"
 }
 
 # Enters Python virtual environment in provided path.
 venv() {
     venv_path="venv/bin/activate"
-    if [ ${#} -eq 0 ]
-    then
+    if [ ${#} -eq 0 ]; then
         source ${venv_path}
     else
         target_dir="${1}"
