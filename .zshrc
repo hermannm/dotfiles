@@ -54,3 +54,8 @@ export NVM_DIR="${HOME}/.nvm"
 if [ -f ~/.zsh_utils ]; then
     source ~/.zsh_utils
 fi
+
+# Loads secrets.
+if [ -f ~/.zsh_secrets ]; then
+    source ~/.zsh_secrets
+fi
