@@ -36,7 +36,7 @@ unpack_location="${temp_dir}/zsh-${version}"
 previous_dir=$(pwd)
 cd "${unpack_location}" && ./configure && make && make test && sudo make install
 installation_status=${?}
-cd previous_dir
+cd "${previous_dir}"
 rm -rf "${unpack_location}"
 
 # Checks that installation succeeded.
