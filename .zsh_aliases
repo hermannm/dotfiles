@@ -1,28 +1,34 @@
-# Sets ls to always color directories.
-ls() { command ls --color=auto "$@"; }
+# Aliases ls to always color directories.
+alias ls='ls --color=auto'
 
 # Short-form for Docker Compose. Overwrites built-in dc command.
-dc() { docker compose "$@"; }
+alias dc='docker compose'
 
-# Short-forms for common git operations.
-g() { git "$@"; }
-ga() { git add "$@"; }
-gb() { git branch "$@"; }
-gc() { git commit "$@"; }
-gca() { git add . && git commit "$@"; }
-gch() { git checkout "$@"; }
-gchm() { git checkout $(git-main-branch) "$@"; }
-gl() { git log --oneline "$@"; }
-gpl() { git pull  "$@"; }
-gplom() { git pull origin $(git-main-branch) "$@"; }
-gps() { git push "$@"; }
-gpsu() { git push -u origin $(git-current-branch) "$@"; }
-grh() { git reset --hard origin/$(git-current-branch) "$@"; }
-gs() { git -c color.ui=always status -sb | $HOME/util-scripts/sort-git-status.py "$@"; }
+# Aliases for common git operations.
+alias g='git'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gca='git add . && git commit'
+alias gch='git checkout'
+alias gchm='git checkout $(git-main-branch)'
+alias gl='git log --oneline'
+alias gpl='git pull'
+alias gplom='git pull origin $(git-main-branch)'
+alias gps='git push'
+alias gpsu='git push -u origin $(git-current-branch)'
+alias grh='git reset --hard origin/$(git-current-branch)'
+alias gs='git -c color.ui=always status -sb | $HOME/util-scripts/sort-git-status.py'
 
-# Utilities for git management of dotfiles.
-dotfiles() { GIT_DIR="$HOME/dotfiles" GIT_WORK_TREE="$HOME" "$@"; }
-dotfiles-ls() { dotfiles git ls-tree main -r --name-only; }
+# Aliases for git management of dotfiles.
+alias df-g='git --git-dir="$HOME/dotfiles" --work-tree="$HOME"'
+alias df-ga='df-g add'
+alias df-gb='df-g branch'
+alias df-gc='df-g commit'
+alias df-gl='df-g log --oneline'
+alias df-gpl='df-g pull'
+alias df-gps='df-g push'
+alias df-gs='df-g -c color.ui=always status -sb | $HOME/util-scripts/sort-git-status.py'
 
 # Echoes main/master branch depending on repo.
 git-main-branch() {
