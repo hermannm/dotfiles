@@ -1,5 +1,5 @@
 # Sets ls to always color directories.
-ls() { ls --color=auto "$@"; }
+ls() { command ls --color=auto "$@"; }
 
 # Short-form for Docker Compose. Overwrites built-in dc command.
 dc() { docker compose "$@"; }
