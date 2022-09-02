@@ -50,6 +50,9 @@ export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"
 [ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"
 
+# Configures kubectl to use gcloud auth.
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
 # Loads utility functions.
 if [ -f ~/.zsh_aliases ]; then
     source ~/.zsh_aliases
