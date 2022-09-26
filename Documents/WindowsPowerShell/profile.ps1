@@ -20,7 +20,10 @@ function prompt {
     return "$color[1;34m$path$branchString$color[37m`$$color[00m "
 }
 
-# Functions for common git operations.
+# Shortcut for Docker.
+function dc { docker compose $args }
+
+# Shortcuts for common git operations.
 function g { git $args }
 function ga { git add $args }
 function gb { git branch $args }
@@ -36,7 +39,7 @@ function gpsu { git push -u origin $(git-current-branch) $args }
 function grh { git reset --hard origin/$(git-current-branch) }
 function gs { git -c color.ui=always status -sb | python "$HOME/util-scripts/sort-git-status.py" }
 
-# Functions for git management of dotfiles.
+# Shortcuts for git management of dotfiles.
 function df-g { git --git-dir="$HOME/dotfiles" --work-tree="$HOME" $args }
 function df-ga { df-g add $args }
 function df-gb { df-g branch $args }
@@ -63,4 +66,15 @@ function git-main-branch {
     }
 
     return "master"
+}
+
+# Enters Python virtual environment in provided path.
+function venv {
+    $venv_path = "venv\scripts\activate"
+    if ( $args.Count -eq 0 ) {
+        . .\$venv_path
+    } else {
+        $target_dir = "$($args[0])"
+        . .\$target_dir\$venv_path
+    }
 }
