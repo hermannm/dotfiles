@@ -8,6 +8,9 @@
 [init]
     defaultbranch = main
 
+[pull]
+    rebase = false
+
 # Sets up Git Credential Manager for connecting to GitHub with a Personal Access Token.
 # Included in Git for Windows: https://gitforwindows.org/
 [credential]
