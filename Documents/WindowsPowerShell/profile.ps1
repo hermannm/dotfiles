@@ -78,3 +78,5 @@ function venv {
         . .\$target_dir\$venv_path
     }
 }
+
+$env:DJANGO_READ_DOT_ENV_FILE = "true"
