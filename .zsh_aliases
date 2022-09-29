@@ -55,10 +55,7 @@ venv() {
     if [ ${#} -eq 0 ]; then
         source ${venv_path}
     else
-        target_dir="${1}"
-        previous_dir=$(pwd)
-        cd ${target_dir} && source ${venv_path}
-        cd ${previous_dir}
+        source "${1}/${venv_path}"
     fi
 }
 
