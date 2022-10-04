@@ -4,5 +4,8 @@ swap=6GB
 processors=16
 localhostForwarding=true
 
+# Disables Linux GUI applications, to avoid bug with terminal losing focus on startup: https://github.com/microsoft/terminal/issues/12134
+guiapplications=false
+
 # Increases vm.max_map_count in WSL, required to run services like ElasticSearch.
 kernelCommandLine = "sysctl.vm.max_map_count=262144"
