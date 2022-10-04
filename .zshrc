@@ -57,6 +57,9 @@ export NVM_DIR="${HOME}/.nvm"
 # Configures kubectl to use gcloud auth.
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
+# Configures Django for indok-web project.
+export DJANGO_READ_DOT_ENV_FILE=true
+
 # Loads utility functions.
 if [ -f ~/.zsh_aliases ]; then
     source ~/.zsh_aliases
