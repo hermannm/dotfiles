@@ -23,6 +23,10 @@ function prompt {
 # Shortcut for Docker.
 function dc { docker compose $args }
 
+# Shortcuts for Jetbrains IDEs.
+function rider { rider64 $args }
+function idea { idea64 $args }
+
 # Remove existing aliases to be overridden by our git shortcuts below.
 del alias:gc -force
 del alias:gps -force
