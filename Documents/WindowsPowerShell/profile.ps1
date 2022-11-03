@@ -1,6 +1,3 @@
-# Removes colorized command highlighting.
-remove-module PSReadline
-
 # Customizes the prompt.
 function prompt {
     $color = [char]27
@@ -18,6 +15,32 @@ function prompt {
     }
 
     return "$color[1;34m$path$branchString$color[37m`$$color[00m "
+}
+
+# Configures auto-complete suggestions.
+import-module PSReadline
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineOption -ShowToolTips
+Set-PSReadLineOption -PredictionSource History
+
+# Disables syntax highlighting.
+Set-PSReadlineOption -Colors @{
+    ContinuationPrompt = "white"
+    Emphasis = "white"
+    Error = "white"
+    Selection = "white"
+    Default = "white"
+    Comment = "white"
+    Keyword = "white"
+    String = "white"
+    Operator = "white"
+    Variable = "white"
+    Command = "white"
+    Parameter = "white"
+    Type = "white"
+    Number = "white"
+    Member = "white"
+    InlinePrediction = "gray"
 }
 
 # Shortcut for Docker.
