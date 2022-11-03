@@ -1,6 +1,10 @@
 # Customizes the prompt.
 function prompt {
     $color = [char]27
+    $gray = "${color}[22;37m"
+    $blue = "${color}[1;34m"
+    $purple = "${color}[1;35m"
+    $default = "${color}[00m"
 
     $path = switch -Wildcard ($executionContext.SessionState.Path.CurrentLocation.Path) {
         "$HOME" { "~" }
@@ -11,10 +15,10 @@ function prompt {
     $branch = git branch --show-current
     $branchString = ""
     if ($branch) {
-        $branchString = "$color[37m:$color[1;35m$branch"
+        $branchString = "${gray}:${purple}${branch}"
     }
 
-    return "$color[1;34m$path$branchString$color[37m`$$color[00m "
+    return "${blue}${path}${branchString}${gray}`$${default} "
 }
 
 # Configures auto-complete suggestions.
