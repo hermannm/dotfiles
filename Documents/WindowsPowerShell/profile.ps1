@@ -21,6 +21,13 @@ function prompt {
     return "${blue}${path}${branchString}${gray}`$${default} "
 }
 
+# Changes ls command to use ls from Git, using Linux style.
+if ($host.Name -eq 'ConsoleHost')
+{
+    function ls-git { & 'C:\Program Files\Git\usr\bin\ls' --color=auto $args }
+    set-alias -Name ls -Value ls-git -Option AllScope
+}
+
 # Configures auto-complete suggestions.
 import-module PSReadline
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
@@ -109,7 +116,7 @@ function git-main-branch {
 # Enters Python virtual environment in provided path.
 function venv {
     $venv_path = "venv\scripts\activate"
-    if ( $args.Count -eq 0 ) {
+    if ($args.Count -eq 0) {
         . .\$venv_path
     } else {
         $target_dir = "$($args[0])"
