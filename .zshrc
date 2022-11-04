@@ -15,50 +15,10 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# Configures autosuggestions for zsh, if it's installed.
-if [ -d "${HOME}/zsh/plugins/zsh-autosuggestions" ] ; then
-    source "${HOME}/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-    ZSH_AUTOSUGGEST_STRATEGY="completion"
-    bindkey '^I' autosuggest-accept
+# Loads environment variables.
+if [ -f ~/zsh/env ]; then
+    source ~/zsh/env
 fi
-
-# Sets PATH to include private bin, if it exists.
-if [ -d "${HOME}/bin" ] ; then
-    PATH="${HOME}/bin:${PATH}"
-fi
-if [ -d "${HOME}/.local/bin" ] ; then
-    PATH="${HOME}/.local/bin:${PATH}"
-fi
-
-# Sets Nano as default editor.
-export EDITOR=nano
-export VISUAL="${EDITOR}"
-
-# Sets up GPG signing.
-export GPG_TTY=$(tty)
-
-# Adds Go to PATH.
-export PATH="/usr/local/go/bin:${HOME}/go/bin:${PATH}"
-
-# Initializes Python environment.
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH="${PYENV_ROOT}/bin:${PATH}"
-eval "$(pyenv init --path)"
-
-# Configures Deno.
-export DENO_INSTALL="${HOME}/.deno"
-export PATH="${DENO_INSTALL}/bin:${PATH}"
-
-# Initializes Node Version Manager.
-export NVM_DIR="${HOME}/.nvm"
-[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"
-[ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"
-
-# Configures kubectl to use gcloud auth.
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-
-# Configures Django for indok-web project.
-export DJANGO_READ_DOT_ENV_FILE=true
 
 # Loads utility functions and aliases.
 if [ -f ~/zsh/aliases ]; then
@@ -73,4 +33,11 @@ fi
 # Loads secrets.
 if [ -f ~/zsh/secrets ]; then
     source ~/zsh/secrets
+fi
+
+# Loads zsh-autosuggestions.
+if [ -d "${HOME}/zsh/plugins/zsh-autosuggestions" ] ; then
+    source "${HOME}/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    ZSH_AUTOSUGGEST_STRATEGY="completion"
+    bindkey '^I' autosuggest-accept
 fi
