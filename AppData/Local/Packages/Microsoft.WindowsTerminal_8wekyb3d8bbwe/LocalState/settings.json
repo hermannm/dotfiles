@@ -15,61 +15,70 @@
     "list": [
       {
         "name": "Ubuntu",
+        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
         "source": "Windows.Terminal.Wsl",
-        "icon": "%USERPROFILE%/drive/misc/computer/windows/ubuntu.png",
         "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\hermannm\\dev",
         "closeOnExit": "never",
-        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}"
+        "icon": "%USERPROFILE%/assets/ubuntu_orange.png",
+        "backgroundImage": "%USERPROFILE%/assets/ubuntu_white.png",
+        "backgroundImageAlignment": "topRight",
+        "backgroundImageOpacity": 0.1,
+        "backgroundImageStretchMode": "none"
       },
       {
         "name": "PowerShell",
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -nologo",
         "startingDirectory": "%USERPROFILE%/dev",
-        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}"
+        "icon": "%USERPROFILE%/assets/powershell_blue.png",
+        "backgroundImage": "%USERPROFILE%/assets/powershell_white.png",
+        "backgroundImageAlignment": "topRight",
+        "backgroundImageOpacity": 0.1,
+        "backgroundImageStretchMode": "none"
       },
       {
         "name": "Command Prompt",
-        "commandline": "%SystemRoot%\\System32\\cmd.exe",
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "commandline": "%SystemRoot%\\System32\\cmd.exe",
         "hidden": true
       },
       {
         "name": "Developer Command Prompt for VS 2022",
-        "source": "Windows.Terminal.VisualStudio",
         "guid": "{e8c20eaa-4db1-5589-bea5-0348e47cbb82}",
+        "source": "Windows.Terminal.VisualStudio",
         "hidden": true
       },
       {
         "name": "Developer PowerShell for VS 2022",
-        "source": "Windows.Terminal.VisualStudio",
         "guid": "{1126fa2a-816d-50db-87b0-394f2f86fa10}",
-        "hidden": false
+        "source": "Windows.Terminal.VisualStudio",
+        "hidden": true
       }
     ]
   },
   "schemes": [
     {
       "name": "gruvbox",
-      "background": "#282828",
-      "black": "#282828",
-      "blue": "#83A598",
-      "brightBlack": "#928374",
-      "brightBlue": "#83A598",
-      "brightCyan": "#8EC07C",
-      "brightGreen": "#B8BB26",
-      "brightPurple": "#D3869B",
-      "brightRed": "#FB4934",
-      "brightWhite": "#EBDBB2",
-      "brightYellow": "#FABD2F",
-      "cursorColor": "#EBDBB2",
-      "cyan": "#8EC07C",
       "foreground": "#EBDBB2",
-      "green": "#B8BB26",
-      "purple": "#D3869B",
-      "red": "#FB4934",
+      "background": "#282828",
+      "cursorColor": "#EBDBB2",
       "selectionBackground": "#EBDBB2",
+      "black": "#282828",
+      "red": "#FB4934",
+      "green": "#B8BB26",
+      "yellow": "#FABD2F",
+      "blue": "#83A598",
+      "purple": "#D3869B",
+      "cyan": "#8EC07C",
       "white": "#A89984",
-      "yellow": "#FABD2F"
+      "brightBlack": "#928374",
+      "brightRed": "#FB4934",
+      "brightGreen": "#B8BB26",
+      "brightYellow": "#FABD2F",
+      "brightBlue": "#83A598",
+      "brightPurple": "#D3869B",
+      "brightCyan": "#8EC07C",
+      "brightWhite": "#EBDBB2"
     }
   ],
   "actions": [
