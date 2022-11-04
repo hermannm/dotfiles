@@ -47,6 +47,9 @@ Set-PSReadlineOption -Colors @{
     InlinePrediction = "gray"
 }
 
+# Alias for opening PowerShell profile (not using $profile, since that is in a different path).
+$global:psprofile = "${HOME}\Documents\WindowsPowerShell\profile.ps1"
+
 # Shortcut for Docker.
 function dc { docker compose $args }
 
