@@ -16,8 +16,8 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 # Configures autosuggestions for zsh, if it's installed.
-if [ -d "${HOME}/.zsh/zsh-autosuggestions" ] ; then
-    source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+if [ -d "${HOME}/zsh/plugins/zsh-autosuggestions" ] ; then
+    source "${HOME}/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
     ZSH_AUTOSUGGEST_STRATEGY="completion"
     bindkey '^I' autosuggest-accept
 fi
@@ -60,12 +60,17 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # Configures Django for indok-web project.
 export DJANGO_READ_DOT_ENV_FILE=true
 
-# Loads utility functions.
-if [ -f ~/.zsh_aliases ]; then
-    source ~/.zsh_aliases
+# Loads utility functions and aliases.
+if [ -f ~/zsh/aliases ]; then
+    source ~/zsh/aliases
+fi
+
+# Loads keybindings.
+if [ -f ~/zsh/keybindings ]; then
+    source ~/zsh/keybindings
 fi
 
 # Loads secrets.
-if [ -f ~/.zsh_secrets ]; then
-    source ~/.zsh_secrets
+if [ -f ~/zsh/secrets ]; then
+    source ~/zsh/secrets
 fi
