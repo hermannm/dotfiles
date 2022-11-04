@@ -35,9 +35,14 @@ if [ -f ~/zsh/secrets ]; then
     source ~/zsh/secrets
 fi
 
-# Loads zsh-autosuggestions.
+# Loads zsh-autosuggestions plugin.
 if [ -d "${HOME}/zsh/plugins/zsh-autosuggestions" ] ; then
     source "${HOME}/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
     ZSH_AUTOSUGGEST_STRATEGY="completion"
     bindkey '^I' autosuggest-accept
+fi
+
+# Loads zsh-shift-select plugin.
+if [ -d "${HOME}/zsh/plugins/zsh-shift-select" ] ; then
+    source "${HOME}/zsh/plugins/zsh-shift-select/zsh-shift-select.plugin.zsh"
 fi
