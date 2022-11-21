@@ -8,8 +8,8 @@ SetWorkingDir %A_ScriptDir%
 return
 
 ; Maps curly brackets to AltGr + O and AltGr + P.
-<^>!o::<^>!7
-<^>!p::<^>!0
+<^>!o::Send {{}
+<^>!p::Send {}}
 
 ; Maps Alt + F4 and Ctrl + F4 to Alt + Q and Alt + W for more MacOS-like window closing.
 !q::Send !{F4}
