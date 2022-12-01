@@ -16,6 +16,9 @@ export GPG_TTY=$(tty)
 # Adds Go to PATH.
 export PATH="/usr/local/go/bin:${HOME}/go/bin:${PATH}"
 
+# Initializes Cargo for Rust.
+. "$HOME/.cargo/env"
+
 # Initializes Python environment.
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH="${PYENV_ROOT}/bin:${PATH}"
