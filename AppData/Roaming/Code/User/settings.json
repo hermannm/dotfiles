@@ -1,7 +1,8 @@
 {
   "editor.formatOnSave": true,
   "editor.rulers": [120],
-  "editor.codeLens": true,
+  "editor.codeLens": false,
+  "editor.inlayHints.enabled": "on",
   "editor.minimap.enabled": false,
   "editor.colorDecorators": false,
   "editor.acceptSuggestionOnEnter": "off",
@@ -65,15 +66,11 @@
   "go.toolsManagement.autoUpdate": true,
 
   // Rust
-  "rust-analyzer.inlayHints.typeHints.enable": false,
-  "rust-analyzer.inlayHints.chainingHints.enable": false,
-  "rust-analyzer.inlayHints.closingBraceHints.enable": false,
-  "rust-analyzer.inlayHints.bindingModeHints.enable": false,
-  "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "never",
-  "rust-analyzer.inlayHints.parameterHints.enable": false,
-  "rust-analyzer.inlayHints.reborrowHints.enable": "never",
-  "rust-analyzer.lens.enable": false,
   "rust-analyzer.semanticHighlighting.operator.enable": false,
+  "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+  "rust-analyzer.inlayHints.bindingModeHints.enable": true,
+  "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "always",
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
 
   // HTML/JavaScript/TypeScript
   "html.autoClosingTags": false,
@@ -115,7 +112,29 @@
   "mdmath.style": "file://c:/users/hermannm/drive/misc/markdown_math_style.css",
   "mdmath.autosave": true,
 
-  // GitLens options
+  // Settings Cycler extension config
+  "settings.cycle": [
+    {
+      "id": "inlayHints",
+      "values": [{ "editor.inlayHints.enabled": "on" }, { "editor.inlayHints.enabled": "off" }]
+    },
+    {
+      "id": "errorLens",
+      "values": [{ "errorLens.enabled": true }, { "errorLens.enabled": false }]
+    }
+  ],
+
+  // ErrorLens extension settings
+  "errorLens.enabled": false,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
+  "workbench.colorCustomizations": {
+    "errorLens.errorForeground": "#fb4934",
+    "errorLens.warningForeground": "#fabd2f",
+    "errorLens.infoForeground": "#83a598",
+    "errorLens.hintForeground": "#83a598"
+  },
+
+  // GitLens extension settings
   "gitlens.showWhatsNewAfterUpgrades": false,
   "gitlens.currentLine.enabled": false,
   "gitlens.currentLine.pullRequests.enabled": false,
