@@ -2,7 +2,7 @@
   "editor.formatOnSave": true,
   "editor.rulers": [120],
   "editor.codeLens": false,
-  "editor.inlayHints.enabled": "on",
+  "editor.inlayHints.enabled": "off",
   "editor.minimap.enabled": false,
   "editor.colorDecorators": false,
   "editor.acceptSuggestionOnEnter": "off",
@@ -125,13 +125,17 @@
   ],
 
   // ErrorLens extension settings
-  "errorLens.enabled": false,
+  "errorLens.enabled": true,
   "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
   "workbench.colorCustomizations": {
-    "errorLens.errorForeground": "#fb4934",
-    "errorLens.warningForeground": "#fabd2f",
-    "errorLens.infoForeground": "#83a598",
-    "errorLens.hintForeground": "#83a598"
+    "errorLens.errorForeground": "#c76654",
+    "errorLens.warningForeground": "#c6a052",
+    "errorLens.infoForeground": "#928374",
+    "errorLens.hintForeground": "#8b9486",
+    "errorLens.errorBackground": "#fff0",
+    "errorLens.warningBackground": "#fff0",
+    "errorLens.infoBackground": "#fff0",
+    "errorLens.hintBackground": "#fff0"
   },
 
   // GitLens extension settings
