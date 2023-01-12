@@ -4,6 +4,9 @@ alias ls='ls --color=auto'
 # Short-form for Docker Compose. Overwrites built-in dc command.
 alias dc='docker compose'
 
+# Short-form for Clang C compiler.
+alias clang='clang-14'
+
 # Aliases for common git operations.
 alias g='git'
 alias ga='git add'
