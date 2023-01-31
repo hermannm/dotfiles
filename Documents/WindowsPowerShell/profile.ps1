@@ -126,5 +126,27 @@ function Venv {
     }
 }
 
-# Sets Django env variable for indok-web project.
-$env:DJANGO_READ_DOT_ENV_FILE = "true"
+# Renames directory/file to kebab-case.
+# Supports piping, so may for example be used to fix a whole directory: dir | Fix-ItemCase
+function Fix-ItemCase {
+    [CmdletBinding()]
+    param (
+        [Parameter(ValueFromPipeline)]
+        $Item
+    )
+
+    process {
+        $itemName = $Item.Name.ToLower()
+        
+        if ($itemName.contains("_")) {
+            $itemName = $itemName.replace("_", "-")
+        }
+
+        if ($itemName.contains(" ")) {
+            $itemName = $itemName.replace(" ", "-")
+        }
+
+        Write-Output "$($Item.Name) -> ${itemName}"
+        Rename-Item -Path $Item.FullName $itemName
+    }
+}
