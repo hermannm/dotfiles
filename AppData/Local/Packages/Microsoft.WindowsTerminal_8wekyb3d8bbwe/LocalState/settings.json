@@ -19,8 +19,8 @@
         "source": "Windows.Terminal.Wsl",
         "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\hermannm\\dev",
         "closeOnExit": "never",
-        "icon": "%USERPROFILE%/assets/ubuntu_orange.png",
-        "backgroundImage": "%USERPROFILE%/assets/ubuntu_white.png",
+        "icon": "%USERPROFILE%/assets/ubuntu-orange.png",
+        "backgroundImage": "%USERPROFILE%/assets/ubuntu-white.png",
         "backgroundImageAlignment": "topRight",
         "backgroundImageOpacity": 0.1,
         "backgroundImageStretchMode": "none"
@@ -30,8 +30,8 @@
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -nologo",
         "startingDirectory": "%USERPROFILE%/dev",
-        "icon": "%USERPROFILE%/assets/powershell_blue.png",
-        "backgroundImage": "%USERPROFILE%/assets/powershell_white.png",
+        "icon": "%USERPROFILE%/assets/powershell-blue.png",
+        "backgroundImage": "%USERPROFILE%/assets/powershell-white.png",
         "backgroundImageAlignment": "topRight",
         "backgroundImageOpacity": 0.1,
         "backgroundImageStretchMode": "none"
