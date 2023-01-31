@@ -1,10 +1,10 @@
 # Customizes the prompt.
-function prompt {
+function Prompt {
     $color = [char]27
     $gray = "${color}[22;37m"
     $blue = "${color}[1;34m"
     $purple = "${color}[1;35m"
-    $reset_color = "${color}[00m"
+    $resetColor = "${color}[00m"
 
     $path = switch -Wildcard ($executionContext.SessionState.Path.CurrentLocation.Path) {
         "${HOME}" { "~" }
@@ -18,24 +18,26 @@ function prompt {
         $branchString = "${gray}:${purple}${branch}"
     }
 
-    return "${blue}${path}${branchString}${gray}`$${reset_color} "
+    return "${blue}${path}${branchString}${gray}`$${resetColor} "
 }
 
 # Changes ls command to use ls from Git, using Linux style.
-if ($host.Name -eq 'ConsoleHost')
-{
-    function ls-git { & 'C:\Program Files\Git\usr\bin\ls' --color=auto $args }
-    set-alias -Name ls -Value ls-git -Option AllScope
+if ($host.Name -eq 'ConsoleHost') {
+    function Use-GitLS {
+        & 'C:\Program Files\Git\usr\bin\ls' --color=auto $args
+    }
+
+    Set-Alias -Name "ls" -Value Use-GitLS -Option AllScope
 }
 
 # Configures auto-complete suggestions.
-import-module PSReadline
-set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
-set-PSReadLineOption -ShowToolTips
-set-PSReadLineOption -PredictionSource History
+Import-Module PSReadline
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineOption -ShowToolTips
+Set-PSReadLineOption -PredictionSource History
 
 # Disables syntax highlighting.
-set-PSReadlineOption -Colors @{
+Set-PSReadlineOption -Colors @{
     ContinuationPrompt = "white"
     Emphasis = "white"
     Error = "white"
@@ -75,13 +77,13 @@ function gb { git branch ${args} }
 function gc { git commit ${args} }
 function gca { git add . ; git commit ${args} }
 function gch { git checkout ${args} }
-function gchm { git checkout $(git-main-branch) }
+function gchm { git checkout $(Get-MainGitBranch) }
 function glg { git log --oneline ${args} }
 function gpl { git pull ${args} }
-function gplom { git pull origin $(git-main-branch) }
+function gplom { git pull origin $(Get-MainGitBranch) }
 function gps { git push ${args} }
-function gpsu { git push -u origin $(git-current-branch) ${args} }
-function grh { git reset --hard origin/$(git-current-branch) ${args} }
+function gpsu { git push -u origin $(Get-CurrentGitBranch) ${args} }
+function grh { git reset --hard origin/$(Get-CurrentGitBranch) ${args} }
 function gs { git -c color.ui=always status -sb ${args} | python "$HOME/util-scripts/sort-git-status.py" }
 
 # Shortcuts for git management of dotfiles.
@@ -96,14 +98,14 @@ function df-gs { df-g -c color.ui=always status -sb ${args} | python "$HOME/util
 function df-ls { df-g ls-tree windows -r --name-only }
 
 # Returns the current git branch.
-function git-current-branch { git branch --show-current }
+function Get-CurrentGitBranch { git branch --show-current }
 
 # Returns main/master branch depending on repo.
-function git-main-branch {
+function Get-MainGitBranch {
     if ((git rev-parse --git-dir 2>$null) -eq $null) { return }
 
-    $main_refs = "refs/heads/main", "refs/remotes/origin/main"
-    foreach ($ref in ${main_refs}) {
+    $mainRefs = "refs/heads/main", "refs/remotes/origin/main"
+    foreach ($ref in ${mainRefs}) {
         git show-ref -q --verify ${ref}
         if (${?}) {
             return "main"
@@ -114,13 +116,13 @@ function git-main-branch {
 }
 
 # Enters Python virtual environment in provided path.
-function venv {
-    $venv_path = "venv\scripts\activate"
+function Venv {
+    $venvPath = "venv\scripts\activate"
     if (${args}.Count -eq 0) {
-        . .\${venv_path}
+        . .\${venvPath}
     } else {
-        $target_dir = "$($args[0])"
-        . .\${target_dir}\${venv_path}
+        $targetDir = "$($args[0])"
+        . .\${targetDir}\${venvPath}
     }
 }
 
