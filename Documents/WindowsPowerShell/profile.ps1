@@ -137,16 +137,19 @@ function Fix-ItemCase {
 
     process {
         $itemName = $Item.Name.ToLower()
-        
-        if ($itemName.contains("_")) {
-            $itemName = $itemName.replace("_", "-")
-        }
+        $itemName = $itemName.replace(" (1)", "")
+        $itemName = $itemName.replace(" - ", "-")
+        $itemName = $itemName.replace(" ", "-")
+        $itemName = $itemName.replace("_", "-")
+        $itemName = $itemName.replace("(", "")
+        $itemName = $itemName.replace(")", "")
+        $itemName = $itemName.replace("[", "")
+        $itemName = $itemName.replace("]", "")
+        $itemName = $itemName.replace("'", "")
 
-        if ($itemName.contains(" ")) {
-            $itemName = $itemName.replace(" ", "-")
+        if ($itemName -cne $Item.Name) {
+            Write-Output "$($Item.Name) -> ${itemName}"
+            Rename-Item -LiteralPath $Item.FullName -NewName $itemName
         }
-
-        Write-Output "$($Item.Name) -> ${itemName}"
-        Rename-Item -Path $Item.FullName $itemName
     }
 }
