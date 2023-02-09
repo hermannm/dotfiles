@@ -63,8 +63,8 @@ $global:psprofile = "${HOME}\Documents\WindowsPowerShell\profile.ps1"
 function dc { docker compose ${args} }
 
 # Shortcuts for Jetbrains IDEs.
+function intellij { idea64 ${args} }
 function rider { rider64 ${args} }
-function idea { idea64 ${args} }
 
 # Remove existing aliases to be overridden by our git shortcuts below.
 del alias:gc -force
