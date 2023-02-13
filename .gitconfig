@@ -1,6 +1,6 @@
 [user]
-	name = hermannm
-	email = hermann.morkrid@gmail.com
+    name = hermannm
+    email = hermann.morkrid@gmail.com
 
 [core]
     editor = nano
@@ -14,14 +14,14 @@
 # Sets up Git Credential Manager for connecting to GitHub with a Personal Access Token.
 # Included in Git for Windows: https://gitforwindows.org/
 [credential]
-    helper = C:\\Program Files\\Git\\mingw64\\bin\\git-credential-manager-core.exe
+    helper = C:/Program\\ Files/Git/mingw64/bin/git-credential-manager-core.exe
 
 # Sets up GPG signing of commits and tags.
 # - Download gpg4win here: https://gpg4win.org/
 # - Add certificate to Kleopatra
 # - Get the key ID, and set it like this (as admin): git config --system user.signingkey [KEY-ID]
 [gpg]
-	program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+    program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
 [commit]
     gpgsign = true
 [tag]
