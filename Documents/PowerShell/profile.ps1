@@ -34,7 +34,10 @@ if ($host.Name -eq 'ConsoleHost') {
 Import-Module PSReadline
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineOption -ShowToolTips
-Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+
+# Disables the new argument passing from Powershell 7.3, to fix passing of empty ${args}
+$PSNativeCommandArgumentPassing = "Legacy"
 
 # Disables syntax highlighting.
 Set-PSReadlineOption -Colors @{
