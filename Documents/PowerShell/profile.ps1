@@ -59,6 +59,10 @@ Set-PSReadlineOption -Colors @{
     InlinePrediction = "gray"
 }
 
+# Configures Fast Node Manager (fnm)
+$Env:PATH += ";${HOME}\.fnm"
+fnm env --use-on-cd | Out-String | Invoke-Expression
+
 # Shortcut for Docker.
 function dc { docker compose ${args} }
 
