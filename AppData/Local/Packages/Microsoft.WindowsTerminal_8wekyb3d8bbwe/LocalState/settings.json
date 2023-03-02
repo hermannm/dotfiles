@@ -83,7 +83,10 @@
   ],
   "actions": [
     { "keys": "ctrl+shift+f", "command": "find" },
-    { "keys": "alt+shift+d", "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" } },
+    {
+      "keys": "alt+shift+d",
+      "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" }
+    },
     { "keys": "ctrl+c", "command": { "action": "copy", "singleLine": false } },
     { "keys": "ctrl+v", "command": "paste" },
     { "keys": "ctrl+f4", "command": "closeTab" },
