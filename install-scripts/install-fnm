@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Runs the Fast Node Manager (fnm) install script, without changing profile
+curl -fsSL https://fnm.vercel.app/install | bash --skip-shell

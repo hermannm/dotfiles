@@ -34,7 +34,6 @@ eval "$(pyenv init --path)"
 export DENO_INSTALL="${HOME}/.deno"
 export PATH="${DENO_INSTALL}/bin:${PATH}"
 
-# Initializes Node Version Manager.
-export NVM_DIR="${HOME}/.nvm"
-[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"
-[ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"
+# Configures Fast Node Manager (fnm)
+export PATH="${HOME}/.local/share/fnm:$PATH"
+eval "`fnm env`"

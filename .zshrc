@@ -1,3 +1,5 @@
+zmodload zsh/zprof
+
 # Sets terminal title to the currently running program.
 echo -ne "\033]1;$0\a"
 
