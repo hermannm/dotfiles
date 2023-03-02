@@ -51,5 +51,13 @@
   {
     "key": "ctrl+g",
     "command": "settings.cycle.errorLens"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "-editor.action.selectHighlights"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "settings.cycle.toggleLightMode"
   }
 ]
