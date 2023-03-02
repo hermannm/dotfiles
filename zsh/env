@@ -36,4 +36,4 @@ export PATH="${DENO_INSTALL}/bin:${PATH}"
 
 # Configures Fast Node Manager (fnm)
 export PATH="${HOME}/.local/share/fnm:$PATH"
-eval "`fnm env`"
+eval "$(fnm env --use-on-cd)"
