@@ -17,7 +17,7 @@ export GPG_TTY=$(tty)
 export PATH="/usr/local/go/bin:${HOME}/go/bin:${PATH}"
 
 # Initializes Cargo for Rust.
-. "$HOME/.cargo/env"
+source "${HOME}/.cargo/env"
 
 # Configures JDK and Maven for Java.
 export JAVA_HOME="/usr/lib/jvm/java-17-amazon-corretto"
@@ -35,5 +35,5 @@ export DENO_INSTALL="${HOME}/.deno"
 export PATH="${DENO_INSTALL}/bin:${PATH}"
 
 # Configures Fast Node Manager (fnm)
-export PATH="${HOME}/.local/share/fnm:$PATH"
+export PATH="${HOME}/.local/share/fnm:${PATH}"
 eval "$(fnm env --use-on-cd)"

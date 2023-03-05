@@ -21,17 +21,17 @@ alias gplom='git pull origin $(git-main-branch)'
 alias gps='git push'
 alias gpsu='git push -u origin $(git-current-branch)'
 alias grh='git reset --hard origin/$(git-current-branch)'
-alias gs='git -c color.ui=always status -sb | $HOME/util-scripts/sort-git-status.py'
+alias gs='git -c color.ui=always status -sb | ${HOME}/util-scripts/sort-git-status.py'
 
 # Aliases for git management of dotfiles.
-alias df-g='git --git-dir="$HOME/dotfiles" --work-tree="$HOME"'
+alias df-g='git --git-dir="${HOME}/dotfiles" --work-tree="${HOME}"'
 alias df-ga='df-g add'
 alias df-gb='df-g branch'
 alias df-gc='df-g commit'
 alias df-glg='df-g log --oneline'
 alias df-gpl='df-g pull'
 alias df-gps='df-g push'
-alias df-gs='df-g -c color.ui=always status -sb | $HOME/util-scripts/sort-git-status.py'
+alias df-gs='df-g -c color.ui=always status -sb | ${HOME}/util-scripts/sort-git-status.py'
 alias df-ls='df-g ls-tree main -r --name-only'
 
 # Echoes the current git branch.
