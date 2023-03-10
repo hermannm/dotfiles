@@ -37,6 +37,7 @@ fi
 
 # Loads zsh-autosuggestions plugin.
 if [ -d "${HOME}/zsh/plugins/zsh-autosuggestions" ] ; then
+    autoload -Uz compinit && compinit
     source "${HOME}/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
     ZSH_AUTOSUGGEST_STRATEGY="completion"
     bindkey '^I' autosuggest-accept
