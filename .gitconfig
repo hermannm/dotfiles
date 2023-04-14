@@ -26,3 +26,7 @@
     gpgsign = true
 [tag]
     gpgsign = true
+
+# Git cookies for opensource.google.com
+[http]
+    cookiefile = /home/hermannm/.gitcookies
