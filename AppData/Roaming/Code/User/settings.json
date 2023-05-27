@@ -92,7 +92,7 @@
   "python.formatting.blackArgs": ["--line-length", "100"],
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args": ["--max-line-length=100"],
+  "python.linting.flake8Args": ["--max-line-length=100", "--ignore=E203,W503"],
   "[python]": {
     "editor.defaultFormatter": null,
     "editor.formatOnType": true
@@ -118,6 +118,8 @@
   },
   "markdown.extension.italic.indicator": "_",
   "markdown.preview.scrollEditorWithPreview": false,
+  "markdown-pdf.displayHeaderFooter": false,
+  "markdown-pdf.highlight": false,
   "emmet.excludeLanguages": ["markdown"],
   "pasteImage.filePathConfirmInputBoxMode": "onlyName",
   "pasteImage.showFilePathConfirmInputBox": true,
@@ -272,5 +274,6 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
+
   "workbench.colorTheme": "gruvbox-plain-cold"
 }

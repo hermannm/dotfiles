@@ -59,5 +59,26 @@
   {
     "key": "ctrl+shift+l",
     "command": "settings.cycle.toggleLightMode"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "editor.action.insertSnippet",
+    "when": "editorLangId == latex && editorTextFocus",
+    "args": {
+      "snippet": "\\textbf{${TM_SELECTED_TEXT}$0}"
+    }
+  },
+  {
+    "key": "ctrl+i",
+    "command": "editor.action.insertSnippet",
+    "when": "editorLangId == latex && editorTextFocus",
+    "args": {
+      "snippet": "\\textit{${TM_SELECTED_TEXT}$0}"
+    }
+  },
+  {
+    "key": "ctrl+shift+v",
+    "command": "markdown.showLockedPreviewToSide",
+    "when": "editorLangId == markdown"
   }
 ]
