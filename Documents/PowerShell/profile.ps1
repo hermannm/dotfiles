@@ -1,4 +1,4 @@
-# Customizes the prompt.
+# Customizes the prompt
 function Prompt {
     $color = [char]27
     $gray = "${color}[22;37m"
@@ -21,7 +21,7 @@ function Prompt {
     return "${blue}${path}${branchString}${gray}`$${resetColor} "
 }
 
-# Changes ls command to use ls from Git, using Linux style.
+# Changes ls command to use ls from Git, using Linux style
 if ($host.Name -eq 'ConsoleHost') {
     function Use-GitLS {
         & 'C:\Program Files\Git\usr\bin\ls' --color=auto $args
@@ -30,7 +30,7 @@ if ($host.Name -eq 'ConsoleHost') {
     Set-Alias -Name "ls" -Value Use-GitLS -Option AllScope
 }
 
-# Configures auto-complete suggestions.
+# Configures auto-complete suggestions
 Import-Module PSReadline
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineOption -ShowToolTips
@@ -39,7 +39,7 @@ Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 # Disables the new argument passing from Powershell 7.3, to fix passing of empty ${args}
 $PSNativeCommandArgumentPassing = "Legacy"
 
-# Disables syntax highlighting.
+# Disables syntax highlighting
 Set-PSReadlineOption -Colors @{
     ContinuationPrompt = "white"
     Emphasis = "white"
@@ -63,20 +63,24 @@ Set-PSReadlineOption -Colors @{
 $Env:PATH += ";${HOME}\.fnm"
 fnm env --use-on-cd | Out-String | Invoke-Expression
 
-# Shortcut for Docker.
+# Loads gadd command-line utility for git
+$Env:PATH += ";${HOME}\dev\gadd\target\release"
+
+# Shortcut for Docker
 function dc { docker compose ${args} }
 
-# Shortcuts for Jetbrains IDEs.
+# Shortcuts for Jetbrains IDEs
 function intellij { idea64 ${args} }
 function rider { rider64 ${args} }
 
-# Remove existing aliases to be overridden by our git shortcuts below.
+# Remove existing aliases to be overridden by our git shortcuts below
 del alias:gc -force
 del alias:gps -force
 
-# Shortcuts for common git operations.
+# Shortcuts for common git operations
 function g { git ${args} }
 function ga { git add ${args} }
+function gai { git -c color.ui=always add -i ${args} }
 function gb { git branch ${args} }
 function gc { git commit ${args} }
 function gca { git add . ; git commit ${args} }
@@ -90,9 +94,10 @@ function gpsu { git push -u origin $(Get-CurrentGitBranch) ${args} }
 function grh { git reset --hard origin/$(Get-CurrentGitBranch) ${args} }
 function gs { git -c color.ui=always status -sb ${args} | python "$HOME/util-scripts/sort-git-status.py" }
 
-# Shortcuts for git management of dotfiles.
+# Shortcuts for git management of dotfiles
 function df-g { git --git-dir="$HOME/dotfiles" --work-tree="$HOME" ${args} }
 function df-ga { df-g add ${args} }
+function gai { df-g -c color.ui=always add -i ${args} }
 function df-gb { df-g branch ${args} }
 function df-gc { df-g commit ${args} }
 function df-glg { df-g log --oneline ${args} }
@@ -101,10 +106,10 @@ function df-gps { df-g push ${args} }
 function df-gs { df-g -c color.ui=always status -sb ${args} | python "$HOME/util-scripts/sort-git-status.py" }
 function df-ls { df-g ls-tree windows -r --name-only }
 
-# Returns the current git branch.
+# Returns the current git branch
 function Get-CurrentGitBranch { git branch --show-current }
 
-# Returns main/master branch depending on repo.
+# Returns main/master branch depending on repo
 function Get-MainGitBranch {
     if ((git rev-parse --git-dir 2>$null) -eq $null) { return }
 
@@ -119,7 +124,7 @@ function Get-MainGitBranch {
     return "master"
 }
 
-# Enters Python virtual environment in provided path.
+# Enters Python virtual environment in provided path
 function Venv {
     $venvPath = "venv\scripts\activate"
     if (${args}.Count -eq 0) {
