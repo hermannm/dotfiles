@@ -1,13 +1,13 @@
-# Aliases ls to always color directories.
+# Aliases ls to always color directories
 alias ls='ls --color=auto'
 
-# Short-form for Docker Compose. Overwrites built-in dc command.
+# Short-form for Docker Compose. Overwrites built-in dc command
 alias dc='docker compose'
 
-# Short-form for Clang C compiler.
+# Short-form for Clang C compiler
 alias clang='clang-14'
 
-# Aliases for common git operations.
+# Aliases for common git operations
 alias g='git'
 alias ga='git add'
 alias gb='git branch'
@@ -23,7 +23,7 @@ alias gpsu='git push -u origin $(git-current-branch)'
 alias grh='git reset --hard origin/$(git-current-branch)'
 alias gs='git -c color.ui=always status -sb | ${HOME}/util-scripts/sort-git-status.py'
 
-# Aliases for git management of dotfiles.
+# Aliases for git management of dotfiles
 alias df-g='git --git-dir="${HOME}/dotfiles" --work-tree="${HOME}"'
 alias df-ga='df-g add'
 alias df-gb='df-g branch'
@@ -34,10 +34,10 @@ alias df-gps='df-g push'
 alias df-gs='df-g -c color.ui=always status -sb | ${HOME}/util-scripts/sort-git-status.py'
 alias df-ls='df-g ls-tree main -r --name-only'
 
-# Echoes the current git branch.
+# Echoes the current git branch
 git-current-branch() { git branch --show-current ; }
 
-# Echoes main/master branch depending on repo.
+# Echoes main/master branch depending on repo
 git-main-branch() {
     git rev-parse --git-dir &>/dev/null || return
 
@@ -52,7 +52,7 @@ git-main-branch() {
     echo "master"
 }
 
-# Enters Python virtual environment in provided path.
+# Enters Python virtual environment in provided path
 venv() {
     venv_path="venv/bin/activate"
     if [ ${#} -eq 0 ]; then

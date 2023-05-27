@@ -1,37 +1,37 @@
 #!/usr/bin/env bash
 
-# Checks that zsh version is provided as first argument.
+# Checks that zsh version is provided as first argument
 if [ -z "${1}" ]; then
     echo "Please provide zsh version."
     exit 1
 fi
 version="${1}"
 
-# Downloads zsh tarball to temporary directory.
+# Downloads zsh tarball to temporary directory
 package_name="zsh-${version}.tar.xz"
 temp_dir="$(mktemp -d)"
 download_location="${temp_dir}/${package_name}"
 echo "Downloading ${package_name}..."
 curl -o "${download_location}" -L "https://sourceforge.net/projects/zsh/files/zsh/${version}/${package_name}/download"
 
-# Checks that download succeeded.
+# Checks that download succeeded
 if [ ${?} -ne 0 ]; then
     echo "Download failed."
     exit 1
 fi
 
-# Unpacks the downloaded tarball, then deletes it.
+# Unpacks the downloaded tarball, then deletes it
 tar -C "${temp_dir}" -xf "${download_location}"
 unpack_status=${?}
 rm -f "${download_location}"
 
-# Checks that unpacking succeeded.
+# Checks that unpacking succeeded
 if [ "${unpack_status}" -ne 0 ]; then
     echo "Unpacking failed."
     exit 1
 fi
 
-# Installs zsh from unpacked files.
+# Installs zsh from unpacked files
 unpack_location="${temp_dir}/zsh-${version}"
 previous_dir=$(pwd)
 cd "${unpack_location}" && ./configure && make && make test && sudo make install
@@ -39,13 +39,13 @@ installation_status=${?}
 cd "${previous_dir}"
 rm -rf "${unpack_location}"
 
-# Checks that installation succeeded.
+# Checks that installation succeeded
 if [ "${installation_status}" -ne 0 ]; then
     echo "Installation failed."
     exit 1
 fi
 
-# Sets zsh as default shell.
+# Sets zsh as default shell
 zsh_location="$(command -v zsh)"
 "${zsh_location}" | sudo tee -a /etc/shells && chsh -s "${zsh_location}"
 if [ "${?}" -ne 0 ]; then
@@ -53,11 +53,11 @@ if [ "${?}" -ne 0 ]; then
     exit 1
 fi
 
-# Installs zsh-autosuggestions plugin.
+# Installs zsh-autosuggestions plugin
 echo "Installing zsh-autosuggestions..."
 git clone --depth 1 --branch v0.7.0 https://github.com/zsh-users/zsh-autosuggestions "${HOME}/zsh/plugins/zsh-autosuggestions"
 
-# Installs zsh-shift-select plugin.
+# Installs zsh-shift-select plugin
 echo "Installing zsh-shift-select..."
 git clone --depth 1 --branch v0.1.1 https://github.com/jirutka/zsh-shift-select.git "${HOME}/zsh/plugins/zsh-shift-select"
 

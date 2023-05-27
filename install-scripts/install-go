@@ -1,39 +1,39 @@
 #!/usr/bin/env bash
 
-# Checks that Go version is provided as first argument.
+# Checks that Go version is provided as first argument
 if [ -z "${1}" ]; then
     echo "Please provide Go version."
     exit 1
 fi
 version="${1}"
 
-# Assumes platform, as this script is made for WSL Ubuntu.
+# Assumes platform, as this script is made for WSL Ubuntu
 platform="linux-amd64"
 
-# Downloads Go tarball to temporary directory.
+# Downloads Go tarball to temporary directory
 package_name="go${version}.${platform}.tar.gz"
 download_location="$(mktemp -d)/go.tar.gz"
 echo "Downloading ${package_name}..."
 curl -o "${download_location}" "https://dl.google.com/go/${package_name}"
 
-# Checks that download succeeded.
+# Checks that download succeeded
 if [ ${?} -ne 0 ]; then
     echo "Download failed."
     exit 1
 fi
 
-# Sets directory where Go is installed.
+# Sets directory where Go is installed
 install_location="/usr/local"
 
-# Removes previous Go installation, if any.
+# Removes previous Go installation, if any
 sudo rm -rf "${install_location}/go"
 
-# Unpacks the downloaded tarball, then deletes it.
+# Unpacks the downloaded tarball, then deletes it
 sudo tar -C "${install_location}" -xzf "${download_location}"
 installation_status=${?}
 sudo rm -f "${download_location}"
 
-# Checks that installation succeeded.
+# Checks that installation succeeded
 if [ "${installation_status}" -ne 0 ]; then
     echo "Installation failed."
     exit 1

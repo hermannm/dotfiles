@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# Updates APT package list.
+# Updates APT package list
 sudo apt-get update
 
-# Installs pyenv dependencies.
+# Installs pyenv dependencies
 sudo apt-get install \
 python3-pip make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev
 
-# Clones pyenv to ~/.pyenv directory.
+# Clones pyenv to ~/.pyenv directory
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
