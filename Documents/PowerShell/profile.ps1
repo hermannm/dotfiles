@@ -86,6 +86,7 @@ function gc { git commit ${args} }
 function gca { git add . ; git commit ${args} }
 function gch { git checkout ${args} }
 function gchm { git checkout $(Get-MainGitBranch) }
+function gd { git diff ${args} }
 function glg { git log --oneline ${args} }
 function gpl { git pull ${args} }
 function gplom { git pull origin $(Get-MainGitBranch) }
@@ -100,6 +101,7 @@ function df-ga { df-g add ${args} }
 function gai { df-g -c color.ui=always add -i ${args} }
 function df-gb { df-g branch ${args} }
 function df-gc { df-g commit ${args} }
+function df-gd { df-g diff ${args} }
 function df-glg { df-g log --oneline ${args} }
 function df-gpl { df-g pull ${args} }
 function df-gps { df-g push ${args} }
