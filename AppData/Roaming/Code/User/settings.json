@@ -61,7 +61,8 @@
     "runtest": false
   },
   "gopls": {
-    "ui.semanticTokens": true
+    "ui.semanticTokens": true,
+    "ui.noSemanticString": true
   },
   "go.toolsManagement.autoUpdate": true,
 
@@ -258,7 +259,7 @@
 
   // Misc
   "diffEditor.ignoreTrimWhitespace": false,
-  "files.associations": { "*.svg": "html" },
+  "files.associations": { "*.svg": "html", "*.html.tmpl": "html" },
   "githubPullRequests.pullBranch": "never",
   "workbench.editor.enablePreview": false,
 
@@ -274,6 +275,5 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
-
   "workbench.colorTheme": "gruvbox-plain-cold"
 }
