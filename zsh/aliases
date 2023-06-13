@@ -36,17 +36,6 @@ alias df-gps='df-g push'
 alias df-gs='df-g -c color.ui=always status -sb | ${HOME}/util-scripts/sort-git-status.py'
 alias df-ls='df-g ls-tree main -r --name-only'
 
-# Workaround to open IntelliJ from WSL terminal
-# See https://youtrack.jetbrains.com/issue/IDEA-306799/Running-idea64.exe-from-WSL2-1.0.0.0-terminal-doesnt-work#focus=Comments-27-6724322.0-0
-intellij() {
-    powershell.exe -Command "& {Start-Process -FilePath idea64.exe $(wslpath -aw $@)}"
-    set_terminal_title -zsh # Avoids terminal title changing to Powershell
-}
-
-set_terminal_title() {
-  echo -en "\e]2;$@\a"
-}
-
 # Echoes the current git branch
 git-current-branch() { git branch --show-current ; }
 
