@@ -24,10 +24,10 @@ df-g config --local status.showUntrackedFiles no
 
 ## Platforms
 
-The `main` branch contains config files for Ubuntu on WSL. To configure other platforms, specify the platform-specific branch to clone:
+The `main` branch contains config files for Linux (Ubuntu). To configure other platforms, specify the platform-specific branch to clone:
 
 ```
 git clone -b [BRANCH_NAME] --single-branch --bare https://github.com/hermannm/dotfiles.git $HOME/dotfiles
 ```
 
-Alternate platform branches currently available are `windows` and `macos`.
+Alternate platform branches currently available are `windows`, `wsl` and `macos`.
