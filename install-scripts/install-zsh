@@ -46,8 +46,8 @@ if [ "${installation_status}" -ne 0 ]; then
 fi
 
 # Sets zsh as default shell
-zsh_location="/usr/bin/zsh"
-"${zsh_location}" | sudo tee -a /etc/shells && chsh -s "${zsh_location}"
+zsh_location="/usr/local/bin/zsh"
+echo "${zsh_location}" | sudo tee -a /etc/shells && chsh -s "${zsh_location}"
 if [ "${?}" -ne 0 ]; then
     echo "zsh installation succeeded, but failed to set it as default shell."
     exit 1
