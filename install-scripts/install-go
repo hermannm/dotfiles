@@ -7,6 +7,10 @@ if [ -z "${1}" ]; then
 fi
 version="${1}"
 
+# Installs dependencies
+sudo apt-get update
+sudo apt-get install curl
+
 # Assumes platform, as this script is made for WSL Ubuntu
 platform="linux-amd64"
 
