@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
+# Installs dependencies
+sudo apt-get update
+sudo apt-get install curl unzip
+
 # Runs the Fast Node Manager (fnm) install script, without changing profile
-curl -fsSL https://fnm.vercel.app/install | bash --skip-shell
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell

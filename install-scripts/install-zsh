@@ -7,6 +7,10 @@ if [ -z "${1}" ]; then
 fi
 version="${1}"
 
+# Installs dependencies
+sudo apt-get update
+sudo apt-get install curl build-essential libncurses5-dev
+
 # Downloads zsh tarball to temporary directory
 package_name="zsh-${version}.tar.xz"
 temp_dir="$(mktemp -d)"
@@ -47,7 +51,7 @@ fi
 
 # Sets zsh as default shell
 zsh_location="$(command -v zsh)"
-"${zsh_location}" | sudo tee -a /etc/shells && chsh -s "${zsh_location}"
+echo "${zsh_location}" | sudo tee -a /etc/shells && chsh -s "${zsh_location}"
 if [ "${?}" -ne 0 ]; then
     echo "zsh installation succeeded, but failed to set it as default shell."
     exit 1
