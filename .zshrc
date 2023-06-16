@@ -15,6 +15,9 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE="${HOME}/.zsh_history"
 
+# Starts terminal in ~/dev
+cd "${HOME}/dev"
+
 # Loads environment variables
 if [ -f "${HOME}/zsh/env" ]; then
     source "${HOME}/zsh/env"
