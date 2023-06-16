@@ -21,4 +21,4 @@
     gpgsign = true
 [credential]
     credentialStore = gpg
-	helper = /usr/local/bin/git-credential-manager
+    helper = /usr/local/bin/git-credential-manager
