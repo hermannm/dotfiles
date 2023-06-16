@@ -54,6 +54,11 @@ git-main-branch() {
     echo "master"
 }
 
+# Opens IntelliJ
+idea() {
+    ("${HOME}/bin/idea" "$1" > /dev/null 2>&1 &) &> /dev/null
+}
+
 # Enters Python virtual environment in provided path
 venv() {
     venv_path="venv/bin/activate"
