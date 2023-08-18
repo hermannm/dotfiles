@@ -26,9 +26,14 @@ if [ -f "${HOME}/zsh/env" ]; then
     source "${HOME}/zsh/env"
 fi
 
-# Loads utility functions and aliases
+# Loads aliases
 if [ -f "${HOME}/zsh/aliases" ]; then
     source "${HOME}/zsh/aliases"
+fi
+
+# Loads utility functions
+if [ -f "${HOME}/zsh/utils" ]; then
+    source "${HOME}/zsh/utils"
 fi
 
 # Loads keybindings

@@ -1,0 +1,30 @@
+# Takes a first arg as a directory to watch for changes,
+# and remaining args as a command to run whenever changes in that directory are detected.
+# Takes an optional -e flag (must be before other args) with a regex pattern of files to exclude.
+watchdir() {
+    exclude=""
+    local OPTIND=1
+    while getopts "e:" flag; do
+        case "${flag}" in
+            e) exclude="|${OPTARG}" ;;
+        esac
+    done
+    shift $((OPTIND - 1))
+
+    echo "Watching '${1}'..."
+
+    inotifywait -r -q -m -e create,close_write,delete --exclude "\.git${exclude}" "${1}" |
+    while read -r directory events filename; do
+        "${@:2}"
+    done
+}
+
+# Enters Python virtual environment in provided path
+venv() {
+    venv_path="venv/bin/activate"
+    if [ ${#} -eq 0 ]; then
+        source ${venv_path}
+    else
+        source "${1}/${venv_path}"
+    fi
+}
