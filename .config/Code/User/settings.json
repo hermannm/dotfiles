@@ -9,8 +9,6 @@
   "editor.suggestSelection": "first",
   "editor.semanticHighlighting.enabled": true,
   "explorer.compactFolders": false,
-  "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false,
   "security.workspace.trust.untrustedFiles": "open",
   "workbench.startupEditor": "none",
   "workbench.editor.untitled.hint": "hidden",
