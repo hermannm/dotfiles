@@ -13,6 +13,8 @@ watchdir() {
 
     echo "Watching '${1}'..."
 
+    "${@:2}"
+
     inotifywait -r -q -m -e create,close_write,delete --exclude "\.git${exclude}" "${1}" |
     while read -r directory events filename; do
         "${@:2}"
