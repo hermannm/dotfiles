@@ -58,3 +58,8 @@ git-main-branch() {
 idea() {
     ("${HOME}/bin/idea" "$1" > /dev/null 2>&1 &) &> /dev/null
 }
+
+# Opens JetBrains Rider
+rider() {
+    ("${HOME}/bin/rider" "$1" > /dev/null 2>&1 &) &> /dev/null
+}
