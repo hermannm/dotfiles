@@ -1,7 +1,7 @@
 {
   "editor.formatOnSave": true,
   "editor.rulers": [100],
-  "editor.inlayHints.enabled": "off",
+  "editor.inlayHints.enabled": "on",
   "editor.minimap.enabled": false,
   "editor.colorDecorators": false,
   "editor.acceptSuggestionOnEnter": "off",
@@ -275,5 +275,6 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
-  "workbench.colorTheme": "gruvbox-plain-cold"
+  "workbench.colorTheme": "gruvbox-plain-cold",
+  "diffEditor.renderSideBySide": false
 }
