@@ -32,8 +32,8 @@
     "#83a498",
     "#fb4934"
   ],
-  "material-icon-theme.folders.theme": "none",
-  "workbench.iconTheme": "gruvbox-material-icon-theme",
+  "workbench.iconTheme": "gruvbox-material-icons",
+  "gruvbox-material-icons.folders.theme": "none",
 
   // Tabs
   "editor.insertSpaces": true,
@@ -79,7 +79,7 @@
   "typescript.autoClosingTags": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "[html][css][json][jsonc][yaml][javascript][javascriptreact][typescript][typescriptreact]": {
+  "[html][css][json][jsonc][yaml][javascript][javascriptreact][typescript][typescriptreact][markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "prettier.printWidth": 100,
@@ -114,9 +114,6 @@
   "notebook.markup.fontSize": 14,
 
   // Markdown/LaTeX
-  "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-  },
   "markdown.extension.italic.indicator": "_",
   "markdown.preview.scrollEditorWithPreview": false,
   "markdown-pdf.displayHeaderFooter": false,
@@ -190,7 +187,7 @@
   ],
 
   // ErrorLens extension settings
-  "errorLens.enabled": true,
+  "errorLens.enabled": false,
   "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
 
   // GitLens extension settings
@@ -259,6 +256,7 @@
 
   // Misc
   "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": false,
   "files.associations": { "*.svg": "html", "*.html.tmpl": "html" },
   "githubPullRequests.pullBranch": "never",
   "workbench.editor.enablePreview": false,
@@ -275,6 +273,5 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
-  "workbench.colorTheme": "gruvbox-plain-cold",
-  "diffEditor.renderSideBySide": false
+  "workbench.colorTheme": "gruvbox-plain-cold"
 }
