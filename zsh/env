@@ -25,6 +25,10 @@ export PATH="${JAVA_HOME}/bin:${PATH}"
 export M2_HOME="/opt/apache-maven-3.9.2"
 export PATH="${M2_HOME}/bin:${PATH}"
 
+# Configures .NET
+export DOTNET_ROOT="/usr/share/dotnet"
+export PATH="${HOME}/.dotnet/tools:${PATH}"
+
 # Initializes Python environment
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH="${PYENV_ROOT}/bin:${PATH}"
