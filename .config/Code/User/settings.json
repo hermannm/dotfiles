@@ -47,6 +47,23 @@
   "editor.fontFamily": "'hermannm-consolas', 'Yahei Consolas Hybrid', 'Consolas', 'Courier New', monospace",
   "editor.fontSize": 14,
 
+  // Formatting
+  "[html][css][json][jsonc][yaml][javascript][javascriptreact][typescript][typescriptreact][markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.printWidth": 100,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.go$",
+        "cmd": "golines ${file} -w"
+      }
+    ]
+  },
+
   // Terminal
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.fontSize": 14,
@@ -79,13 +96,6 @@
   "typescript.autoClosingTags": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "[html][css][json][jsonc][yaml][javascript][javascriptreact][typescript][typescriptreact][markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "prettier.printWidth": 100,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
 
   // Python
   "python.formatting.provider": "black",
@@ -256,7 +266,6 @@
 
   // Misc
   "diffEditor.ignoreTrimWhitespace": false,
-  "diffEditor.renderSideBySide": false,
   "files.associations": { "*.svg": "html", "*.html.tmpl": "html" },
   "githubPullRequests.pullBranch": "never",
   "workbench.editor.enablePreview": false,
