@@ -11,7 +11,6 @@ alias clang='clang-14'
 alias g='git'
 alias ga='git add'
 alias gb='git branch'
-alias gc='git commit'
 alias gca='git add . && git commit'
 alias gch='git checkout'
 alias gchm='git checkout $(git-main-branch)'
@@ -23,6 +22,10 @@ alias gps='git push'
 alias gpsu='git push -u origin $(git-current-branch)'
 alias grh='git reset --hard origin/$(git-current-branch)'
 alias gs='git -c color.ui=always status -sb | ${HOME}/util-scripts/sort-git-status.py'
+gc() {
+    git commit "$@"
+    gs
+}
 
 # Aliases for git management of dotfiles
 alias df-g='git --git-dir="${HOME}/dotfiles" --work-tree="${HOME}"'
