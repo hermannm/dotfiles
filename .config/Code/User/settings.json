@@ -263,7 +263,10 @@
 
   // Misc
   "diffEditor.ignoreTrimWhitespace": false,
-  "files.associations": { "*.svg": "html", "*.html.tmpl": "html" },
+  "files.associations": {
+    "*.svg": "html",
+    "*.html.tmpl": "html"
+  },
   "githubPullRequests.pullBranch": "never",
   "workbench.editor.enablePreview": false,
 
@@ -279,5 +282,6 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
-  "workbench.colorTheme": "gruvbox-plain-cold"
+  "workbench.colorTheme": "gruvbox-plain-cold",
+  "workbench.editor.empty.hint": "hidden"
 }
