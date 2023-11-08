@@ -8,9 +8,15 @@ precmd() {
     vcs_info
     print -Pn "\e]0;%~\a" # Sets terminal title to current directory
 }
-zstyle ':vcs_info:git:*' formats '%F{white}:%F{magenta}%b'
 setopt PROMPT_SUBST
-PROMPT='%F{blue}${PWD/#${HOME}/~}${vcs_info_msg_0_}%F{white}\$%{${reset_color}%} '
+
+# 'Cold' theme
+# zstyle ':vcs_info:git:*' formats '%F{white}:%F{magenta}%b'
+# PROMPT='%F{blue}${PWD/#${HOME}/~}${vcs_info_msg_0_}%F{white}\$%{${reset_color}%} '
+
+# 'Warm' theme
+zstyle ':vcs_info:git:*' formats '%F{white}:%F{yellow}%b'
+PROMPT='%F{green}${PWD/#${HOME}/~}${vcs_info_msg_0_}%F{white}\$%{${reset_color}%} '
 
 # Configures shell history
 setopt histignorealldups sharehistory
