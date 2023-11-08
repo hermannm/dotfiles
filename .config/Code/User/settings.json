@@ -1,7 +1,7 @@
 {
   "editor.formatOnSave": true,
   "editor.rulers": [100],
-  "editor.inlayHints.enabled": "off",
+  "editor.inlayHints.enabled": "on",
   "editor.minimap.enabled": false,
   "editor.colorDecorators": false,
   "editor.acceptSuggestionOnEnter": "off",
@@ -11,7 +11,6 @@
   "explorer.compactFolders": false,
   "security.workspace.trust.untrustedFiles": "open",
   "workbench.startupEditor": "none",
-  "workbench.editor.untitled.hint": "hidden",
   "workbench.tree.indent": 12,
 
   // Theme
@@ -52,6 +51,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "prettier.printWidth": 100,
+  "prettier.proseWrap": "always",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
@@ -269,6 +269,7 @@
   },
   "githubPullRequests.pullBranch": "never",
   "workbench.editor.enablePreview": false,
+  "workbench.editor.empty.hint": "hidden",
 
   // Settings cycled when toggling light/dark mode
   "editor.tokenColorCustomizations": {},
@@ -282,6 +283,5 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
-  "workbench.colorTheme": "gruvbox-plain-cold",
-  "workbench.editor.empty.hint": "hidden"
+  "workbench.colorTheme": "gruvbox-plain-warm"
 }
