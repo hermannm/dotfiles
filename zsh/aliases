@@ -65,10 +65,10 @@ git-main-branch() {
 
 # Opens IntelliJ
 idea() {
-    ("${HOME}/bin/idea" "$1" > /dev/null 2>&1 &) &> /dev/null
+    ("${HOME}/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin/idea.sh" "$1" > /dev/null 2>&1 &) &> /dev/null
 }
 
 # Opens JetBrains Rider
 rider() {
-    ("${HOME}/bin/rider" "$1" > /dev/null 2>&1 &) &> /dev/null
+    ("${HOME}/.local/share/JetBrains/Toolbox/apps/rider/bin/rider.sh" "$1" > /dev/null 2>&1 &) &> /dev/null
 }
