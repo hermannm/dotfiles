@@ -81,6 +81,9 @@
     "ui.noSemanticString": true
   },
   "go.toolsManagement.autoUpdate": true,
+  "go.toolsEnvVars": {
+    "GOOS": "linux"
+  },
 
   // Rust
   "rust-analyzer.semanticHighlighting.operator.enable": false,
@@ -283,5 +286,6 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
-  "workbench.colorTheme": "gruvbox-plain-warm"
+  "workbench.colorTheme": "gruvbox-plain-warm",
+  "git.openRepositoryInParentFolders": "always"
 }
