@@ -78,7 +78,9 @@
   },
   "gopls": {
     "ui.semanticTokens": true,
-    "ui.noSemanticString": true
+    "ui.noSemanticString": true,
+    // https://github.com/golang/go/issues/49104#issuecomment-1278994201
+    "build.standaloneTags": ["ignore", "mage"]
   },
   "go.toolsManagement.autoUpdate": true,
   "go.toolsEnvVars": {
