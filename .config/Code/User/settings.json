@@ -80,7 +80,10 @@
     "ui.semanticTokens": true,
     "ui.noSemanticString": true,
     // https://github.com/golang/go/issues/49104#issuecomment-1278994201
-    "build.standaloneTags": ["ignore", "mage"]
+    "build.standaloneTags": ["ignore", "mage"],
+    "ui.diagnostic.analyses": {
+      "loopclosure": false // Redundant in Go 1.22
+    }
   },
   "go.toolsManagement.autoUpdate": true,
   "go.toolsEnvVars": {
@@ -288,6 +291,6 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
-  "workbench.colorTheme": "gruvbox-plain-warm",
+  "workbench.colorTheme": "gruvbox-plain-cold",
   "git.openRepositoryInParentFolders": "always"
 }
