@@ -1,0 +1,74 @@
+# Aliases ls to always color directories
+alias ls='ls --color=auto'
+
+# Short-form for Docker Compose. Overwrites built-in dc command
+alias dc='docker compose'
+
+# Short-form for Clang C compiler
+alias clang='clang-14'
+
+# Aliases for common git operations
+alias g='git'
+alias ga='git add'
+alias gb='git branch'
+alias gca='git add . && git commit'
+alias gch='git checkout'
+alias gchm='git checkout $(git-main-branch)'
+alias gd='git diff'
+alias glg='git log --oneline'
+alias gpl='git pull'
+alias gplom='git pull origin $(git-main-branch)'
+alias gps='git push'
+alias gpsu='git push -u origin $(git-current-branch)'
+alias grh='git reset --hard origin/$(git-current-branch)'
+alias gs='git -c color.ui=always status -sb | ${HOME}/util-scripts/sort-git-status.py'
+gc() {
+    git commit "$@"
+    gs
+}
+
+# Aliases for git management of dotfiles
+alias df-g='git --git-dir="${HOME}/dotfiles" --work-tree="${HOME}"'
+alias df-gb='df-g branch'
+alias df-gd='df-g diff'
+alias df-glg='df-g log --oneline'
+alias df-gpl='df-g pull'
+alias df-gps='df-g push'
+alias df-gs='df-g -c color.ui=always status -sb | ${HOME}/util-scripts/sort-git-status.py'
+alias df-ls='df-g ls-tree main -r --name-only'
+df-ga() {
+    df-g add "$@"
+    df-gs
+}
+df-gc() {
+    df-g commit "$@"
+    df-gs
+}
+
+# Echoes the current git branch
+git-current-branch() { git branch --show-current ; }
+
+# Echoes main/master branch depending on repo
+git-main-branch() {
+    git rev-parse --git-dir &>/dev/null || return
+
+    main_refs=("refs/heads/main" "refs/remotes/origin/main")
+    for ref in $main_refs; do
+        if git show-ref -q --verify $ref; then
+            echo "main"
+            return
+        fi
+    done
+
+    echo "master"
+}
+
+# Opens IntelliJ
+idea() {
+    ("${HOME}/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin/idea.sh" "$1" > /dev/null 2>&1 &) &> /dev/null
+}
+
+# Opens JetBrains Rider
+rider() {
+    ("${HOME}/.local/share/JetBrains/Toolbox/apps/rider/bin/rider.sh" "$1" > /dev/null 2>&1 &) &> /dev/null
+}

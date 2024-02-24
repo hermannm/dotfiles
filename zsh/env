@@ -1,0 +1,51 @@
+# Sets PATH to include private bin, if it exists
+if [ -d "${HOME}/bin" ] ; then
+    PATH="${HOME}/bin:${PATH}"
+fi
+if [ -d "${HOME}/.local/bin" ] ; then
+    PATH="${HOME}/.local/bin:${PATH}"
+fi
+if [ -d "${HOME}/apps" ] ; then
+    PATH="${HOME}/apps:${PATH}"
+fi
+
+# Sets Nano as default editor
+export EDITOR=nano
+export VISUAL="${EDITOR}"
+
+# Sets up GPG signing
+export GPG_TTY=$(tty)
+
+# Adds Go to PATH
+export PATH="/usr/local/go/bin:${HOME}/go/bin:${PATH}"
+
+# Initializes Cargo for Rust
+source "${HOME}/.cargo/env"
+
+# Configures JDK and Maven for Java
+export JAVA_HOME="/usr/lib/jvm/java-17-amazon-corretto"
+export PATH="${JAVA_HOME}/bin:${PATH}"
+export M2_HOME="/opt/apache-maven-3.9.2"
+export PATH="${M2_HOME}/bin:${PATH}"
+
+# Configures .NET
+export DOTNET_ROOT="/usr/share/dotnet"
+export PATH="${HOME}/.dotnet/tools:${PATH}"
+
+# Initializes Python environment
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH="${PYENV_ROOT}/bin:${PATH}"
+eval "$(pyenv init --path)"
+
+# Configures Deno
+export DENO_INSTALL="${HOME}/.deno"
+export PATH="${DENO_INSTALL}/bin:${PATH}"
+
+# Configures Fast Node Manager (fnm)
+export PATH="${HOME}/.local/share/fnm:${PATH}"
+eval "$(fnm env --use-on-cd)"
+
+# Loads gadd command-line utility for git
+if [ -f "${HOME}/dev/gadd/target/release/gadd" ]; then
+    export PATH="${HOME}/dev/gadd/target/release:${PATH}"
+fi

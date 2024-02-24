@@ -1,90 +1,66 @@
-# Sets up the prompt with git branch name.
+# Sets terminal title to the currently running program
+echo -ne "\033]1;${0}\a"
+
+# Sets up the prompt with git branch name
 autoload -U colors && colors
 autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%F{white}/%F{yellow}%b'
+precmd() {
+    vcs_info
+    print -Pn "\e]0;%~\a" # Sets terminal title to current directory
+}
 setopt PROMPT_SUBST
-PROMPT='%F{green}${PWD/#$HOME/~}${vcs_info_msg_0_}%F{white}:%{$reset_color%} '
 
-# Alias ls to always color directories.
-alias ls='ls -G'
+# 'Cold' theme
+# zstyle ':vcs_info:git:*' formats '%F{white}:%F{magenta}%b'
+# PROMPT='%F{blue}${PWD/#${HOME}/~}${vcs_info_msg_0_}%F{white}\$%{${reset_color}%} '
 
-# Alias for git management of dotfiles.
-alias dotfiles='git --git-dir="$HOME/dotfiles" --work-tree="$HOME"'
+# 'Warm' theme
+zstyle ':vcs_info:git:*' formats '%F{white}:%F{yellow}%b'
+PROMPT='%F{green}${PWD/#${HOME}/~}${vcs_info_msg_0_}%F{white}\$%{${reset_color}%} '
 
-# Alias for opening VSCode workspaces.
-alias codew='code web.code-workspace'
+# Configures shell history
+setopt histignorealldups sharehistory
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE="${HOME}/.zsh_history"
 
-# Short-form for Docker Compose. Overwrites built-in dc command.
-alias dc='docker compose'
-# Short-form for using Docker Compose with M1 mac config file.
-alias dcm1='docker compose -f docker-compose-m1.yml'
+# Starts terminal in ~/dev
+cd "${HOME}/dev"
 
-# Command to enter Python virtual environment in provided path.
-venv() {
-    venv_path="venv/bin/activate"
-    if [ $# -eq 0 ]
-    then
-        source $venv_path
-    else
-        target_dir="$1"
-        previous_dir=$(pwd)
-        cd $target_dir && source $venv_path
-        cd $previous_dir
-    fi
-}
+# Loads environment variables
+if [ -f "${HOME}/zsh/env" ]; then
+    source "${HOME}/zsh/env"
+fi
 
-# Sets Nano as default editor.
-export EDITOR=nano
-export VISUAL="$EDITOR"
+# Loads aliases
+if [ -f "${HOME}/zsh/aliases" ]; then
+    source "${HOME}/zsh/aliases"
+fi
 
-# Sets up GPG signing.
-export GPG_TTY=$(tty)
+# Loads utility functions
+if [ -f "${HOME}/zsh/utils" ]; then
+    source "${HOME}/zsh/utils"
+fi
 
-# Sets up Homebrew.
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Loads keybindings
+if [ -f "${HOME}/zsh/keybindings" ]; then
+    source "${HOME}/zsh/keybindings"
+fi
 
-# Configures autosuggestions for zsh.
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_STRATEGY="completion"
-bindkey '^I' autosuggest-accept
+# Loads secrets
+if [ -f "${HOME}/zsh/secrets" ]; then
+    source "${HOME}/zsh/secrets"
+fi
 
-# Initializes Python environment.
-eval "$(pyenv init --path)"
+# Loads zsh-autosuggestions plugin
+if [ -d "${HOME}/zsh/plugins/zsh-autosuggestions" ] ; then
+    autoload -Uz compinit && compinit
+    source "${HOME}/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    ZSH_AUTOSUGGEST_STRATEGY="completion"
+    bindkey '^I' autosuggest-accept
+fi
 
-# Sets up pipx for running Python packages.
-export PATH="$PATH:/Users/hermannm/.local/bin"
-
-# Adds Go bin to PATH.
-export PATH="$PATH:/Users/hermannm/go/bin"
-
-# Configures Java Home.
-export JAVA_HOME=$(/usr/libexec/java_home)
-
-# Sets up Node Version Manager to auto-detect Node version on folder change.
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-enter_directory() {
-    if [[ $PWD == $PREV_PWD ]]; then
-        return
-    fi
-
-    if [[ "$PWD" =~ "$PREV_PWD" && ! -f ".nvmrc" ]]; then
-        return
-    fi
-
-    PREV_PWD=$PWD
-    if [[ -f ".nvmrc" ]]; then
-        nvm use
-        NVM_DIRTY=true
-    elif [[ $NVM_DIRTY = true ]]; then
-        nvm use default
-        NVM_DIRTY=false
-    fi
-}
-export PROMPT_COMMAND=enter_directory
-
-# Fixes Postgres for Django.
-export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib -L/opt/homebrew/opt/libpq/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include -I/opt/homebrew/opt/libpq/include"
+# Loads zsh-shift-select plugin
+if [ -d "${HOME}/zsh/plugins/zsh-shift-select" ] ; then
+    source "${HOME}/zsh/plugins/zsh-shift-select/zsh-shift-select.plugin.zsh"
+fi
