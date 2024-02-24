@@ -1,21 +1,23 @@
 {
   "editor.formatOnSave": true,
   "editor.rulers": [100],
-  "editor.codeLens": true,
+  "editor.inlayHints.enabled": "on",
   "editor.minimap.enabled": false,
   "editor.colorDecorators": false,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.suggestSelection": "first",
+  "editor.semanticHighlighting.enabled": true,
   "explorer.compactFolders": false,
   "security.workspace.trust.untrustedFiles": "open",
   "workbench.startupEditor": "none",
-  "workbench.editor.untitled.hint": "hidden",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.tree.indent": 12,
+  "git.openRepositoryInParentFolders": "always",
 
   // Theme
   "editor.bracketPairColorization.enabled": false,
-  "workbench.colorTheme": "gruvbox-plain",
+  "workbench.iconTheme": "gruvbox-material-icons",
+  "gruvbox-material-icons.folders.theme": "none",
   "git-graph.graph.colours": [
     "#b16286",
     "#689d6a",
@@ -37,17 +39,31 @@
   "editor.insertSpaces": true,
   "editor.detectIndentation": true,
   "editor.tabSize": 4,
-  "[html][xml][css][json][jsonc][yaml][javascript][javascriptreact][typescript][typescriptreact]": {
+  "[html][xml][css][json][jsonc][yaml][yml][javascript][javascriptreact][typescript][typescriptreact][markdown]": {
     "editor.tabSize": 2
   },
 
   // Font
-  "editor.fontFamily": "Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'hermannm-consolas', 'Yahei Consolas Hybrid', 'Consolas', 'Courier New', monospace",
   "editor.fontSize": 14,
-  "editor.semanticHighlighting.enabled": true,
-  "workbench.iconTheme": "gruvbox-material-icon-theme",
-  "material-icon-theme.folders.theme": "none",
-  "workbench.tree.indent": 12,
+
+  // Formatting
+  "[html][css][json][jsonc][yaml][javascript][javascriptreact][typescript][typescriptreact][markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.printWidth": 100,
+  "prettier.proseWrap": "always",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.go$",
+        "cmd": "golines ${file} -w"
+      }
+    ]
+  },
 
   // Terminal
   "terminal.integrated.cursorStyle": "line",
@@ -62,30 +78,42 @@
     "runtest": false
   },
   "gopls": {
-    "ui.semanticTokens": true
+    "ui.semanticTokens": true,
+    "ui.noSemanticString": true,
+    // https://github.com/golang/go/issues/49104#issuecomment-1278994201
+    "build.standaloneTags": ["ignore", "mage"],
+    "ui.diagnostic.analyses": {
+      "loopclosure": false // Redundant in Go 1.22
+    }
   },
   "go.toolsManagement.autoUpdate": true,
 
-  // Frontend web development
+  // Rust
+  "rust-analyzer.semanticHighlighting.operator.enable": false,
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+  "rust-analyzer.inlayHints.bindingModeHints.enable": true,
+  "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "always",
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
+
+  // HTML/JavaScript/TypeScript
   "html.autoClosingTags": false,
   "javascript.autoClosingTags": false,
   "typescript.autoClosingTags": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "[html][css][json][jsonc][yaml][javascript][javascriptreact][typescript][typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "prettier.printWidth": 100,
 
   // Python
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["--line-length", "100"],
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args": ["--max-line-length=100"],
   "[python]": {
-    "editor.defaultFormatter": null
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnType": true
   },
+  "black-formatter.args": ["--line-length", "100"],
+  "flake8.args": ["--max-line-length=100", "--ignore=E203,W503"],
+
+  // C/C++
+  "C_Cpp.doxygen.generatedStyle": "/**",
+  "C_Cpp.doxygen.generateOnType": false,
 
   // Notebooks
   "notebook.cellToolbarLocation": {
@@ -93,27 +121,89 @@
     "jupyter-notebook": "left"
   },
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
+    "*.ipynb": "jupyter-notebook",
+    "*.pdf": "latex-workshop-pdf-hook"
   },
   "notebook.markup.fontSize": 14,
 
-  // C#
-  "csharp.referencesCodeLens.enabled": false,
-  "csharp.semanticHighlighting.enabled": false,
-  "omnisharp.useModernNet": false,
-  "omnisharp.useGlobalMono": "always",
-
-  // Java
-  "java.jdt.ls.java.home": "/Users/hermannm/Library/Java/JavaVirtualMachines/openjdk-17.0.2/Contents/Home",
-
-  // Markdown
+  // Markdown/LaTeX
+  "markdown.extension.italic.indicator": "_",
   "markdown.preview.scrollEditorWithPreview": false,
+  "markdown-pdf.displayHeaderFooter": false,
+  "markdown-pdf.highlight": false,
   "emmet.excludeLanguages": ["markdown"],
-  "mdmath.style": "file://c:/users/hermannm/drive/misc/markdown_math_style.css",
-  "mdmath.autosave": true,
+  "pasteImage.filePathConfirmInputBoxMode": "onlyName",
+  "pasteImage.showFilePathConfirmInputBox": true,
+  "pasteImage.path": "${currentFileDir}/img",
+  "latex-workshop.latex.outDir": "%DIR%/latex-output",
 
-  // GitLens
-  "gitlens.plusFeatures.enabled": false,
+  // Settings Cycler extension config
+  "settings.cycle": [
+    {
+      "id": "inlayHints",
+      "values": [{ "editor.inlayHints.enabled": "on" }, { "editor.inlayHints.enabled": "off" }]
+    },
+    {
+      "id": "errorLens",
+      "values": [{ "errorLens.enabled": true }, { "errorLens.enabled": false }]
+    },
+    {
+      "id": "toggleLightMode",
+      "values": [
+        {
+          "workbench.colorTheme": "Default Light+",
+          "editor.tokenColorCustomizations": {
+            "textMateRules": [
+              {
+                "scope": [
+                  "support.function",
+                  "entity.name.function",
+                  "keyword",
+                  "keyword.control",
+                  "constant.character",
+                  "storage.type"
+                ],
+                "settings": {
+                  "foreground": "#A31515"
+                }
+              },
+              {
+                "scope": ["variable", "support.class"],
+                "settings": {
+                  "foreground": "#000000"
+                }
+              }
+            ]
+          },
+          "workbench.colorCustomizations": {
+            "statusBar.background": "#2C2C2C",
+            "statusBar.noFolderBackground": "#2C2C2C",
+            "statusBar.debuggingBackground": "#2C2C2C"
+          }
+        },
+        {
+          "workbench.colorTheme": "gruvbox-plain-cold",
+          "editor.tokenColorCustomizations": {},
+          "workbench.colorCustomizations": {
+            "errorLens.errorForeground": "#c76654",
+            "errorLens.warningForeground": "#c6a052",
+            "errorLens.infoForeground": "#928374",
+            "errorLens.hintForeground": "#8b9486",
+            "errorLens.errorBackground": "#fff0",
+            "errorLens.warningBackground": "#fff0",
+            "errorLens.infoBackground": "#fff0",
+            "errorLens.hintBackground": "#fff0"
+          }
+        }
+      ]
+    }
+  ],
+
+  // ErrorLens extension settings
+  "errorLens.enabled": false,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
+
+  // GitLens extension settings
   "gitlens.showWhatsNewAfterUpgrades": false,
   "gitlens.currentLine.enabled": false,
   "gitlens.currentLine.pullRequests.enabled": false,
@@ -178,5 +268,26 @@
   },
 
   // Misc
-  "diffEditor.ignoreTrimWhitespace": false
+  "diffEditor.ignoreTrimWhitespace": false,
+  "files.associations": {
+    "*.svg": "html",
+    "*.html.tmpl": "html"
+  },
+  "githubPullRequests.pullBranch": "never",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.empty.hint": "hidden",
+
+  // Settings cycled when toggling light/dark mode
+  "editor.tokenColorCustomizations": {},
+  "workbench.colorCustomizations": {
+    "errorLens.errorForeground": "#c76654",
+    "errorLens.warningForeground": "#c6a052",
+    "errorLens.infoForeground": "#928374",
+    "errorLens.hintForeground": "#8b9486",
+    "errorLens.errorBackground": "#fff0",
+    "errorLens.warningBackground": "#fff0",
+    "errorLens.infoBackground": "#fff0",
+    "errorLens.hintBackground": "#fff0"
+  },
+  "workbench.colorTheme": "gruvbox-plain-warm"
 }
