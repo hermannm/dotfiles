@@ -5,6 +5,9 @@ fi
 if [ -d "${HOME}/.local/bin" ] ; then
     PATH="${HOME}/.local/bin:${PATH}"
 fi
+if [ -d "${HOME}/apps" ] ; then
+    PATH="${HOME}/apps:${PATH}"
+fi
 
 # Sets Nano as default editor
 export EDITOR=nano
