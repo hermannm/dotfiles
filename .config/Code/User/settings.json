@@ -12,9 +12,12 @@
   "security.workspace.trust.untrustedFiles": "open",
   "workbench.startupEditor": "none",
   "workbench.tree.indent": 12,
+  "git.openRepositoryInParentFolders": "always",
 
   // Theme
   "editor.bracketPairColorization.enabled": false,
+  "workbench.iconTheme": "gruvbox-material-icons",
+  "gruvbox-material-icons.folders.theme": "none",
   "git-graph.graph.colours": [
     "#b16286",
     "#689d6a",
@@ -31,8 +34,6 @@
     "#83a498",
     "#fb4934"
   ],
-  "workbench.iconTheme": "gruvbox-material-icons",
-  "gruvbox-material-icons.folders.theme": "none",
 
   // Tabs
   "editor.insertSpaces": true,
@@ -53,7 +54,7 @@
   "prettier.printWidth": 100,
   "prettier.proseWrap": "always",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "always"
   },
   "emeraldwalk.runonsave": {
     "commands": [
@@ -86,9 +87,6 @@
     }
   },
   "go.toolsManagement.autoUpdate": true,
-  "go.toolsEnvVars": {
-    "GOOS": "linux"
-  },
 
   // Rust
   "rust-analyzer.semanticHighlighting.operator.enable": false,
@@ -291,6 +289,5 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
-  "workbench.colorTheme": "gruvbox-plain-cold",
-  "git.openRepositoryInParentFolders": "always"
+  "workbench.colorTheme": "gruvbox-plain-warm"
 }
