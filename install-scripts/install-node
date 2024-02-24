@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Run install-fnm first
+fnm install --lts
+fnm use --lts
