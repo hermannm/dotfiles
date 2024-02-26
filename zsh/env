@@ -55,6 +55,3 @@ eval "$(fnm env --use-on-cd)"
 if [ -f "${HOME}/dev/gadd/target/release/gadd" ]; then
     export PATH="${HOME}/dev/gadd/target/release:${PATH}"
 fi
-
-# Enables launching IntelliJ with idea command
-export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS:${PATH}"

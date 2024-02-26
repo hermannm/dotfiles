@@ -64,3 +64,8 @@ git-main-branch() {
 
     echo "master"
 }
+
+# Opens IntelliJ
+idea() {
+    ("/Applications/IntelliJ IDEA.app/Contents/MacOS/idea" "$1" > /dev/null 2>&1 &) &> /dev/null
+}
