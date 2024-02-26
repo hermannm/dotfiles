@@ -13,6 +13,9 @@ fi
 export EDITOR=nano
 export VISUAL="${EDITOR}"
 
+# Initializes Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Sets up GPG signing
 export GPG_TTY=$(tty)
 
@@ -23,10 +26,13 @@ export PATH="/usr/local/go/bin:${HOME}/go/bin:${PATH}"
 source "${HOME}/.cargo/env"
 
 # Configures JDK and Maven for Java
-export JAVA_HOME="/usr/lib/jvm/java-17-amazon-corretto"
+export JAVA_HOME="/Users/hermannm/.local/share/mise/installs/java/temurin-17"
 export PATH="${JAVA_HOME}/bin:${PATH}"
 export M2_HOME="/opt/apache-maven-3.9.2"
 export PATH="${M2_HOME}/bin:${PATH}"
+
+# Loads mise, version manager for Java and others
+eval "$(/opt/homebrew/bin/mise activate zsh)"
 
 # Configures .NET
 export DOTNET_ROOT="/usr/share/dotnet"
