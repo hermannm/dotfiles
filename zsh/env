@@ -28,7 +28,7 @@ source "${HOME}/.cargo/env"
 # Configures JDK and Maven for Java
 export JAVA_HOME="/Users/hermannm/.local/share/mise/installs/java/temurin-17"
 export PATH="${JAVA_HOME}/bin:${PATH}"
-export M2_HOME="/opt/apache-maven-3.9.2"
+export M2_HOME="${HOME}/bin/apache-maven-3.9.6"
 export PATH="${M2_HOME}/bin:${PATH}"
 
 # Loads mise, version manager for Java and others
