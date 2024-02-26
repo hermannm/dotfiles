@@ -64,13 +64,3 @@ git-main-branch() {
 
     echo "master"
 }
-
-# Opens IntelliJ
-idea() {
-    ("${HOME}/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin/idea.sh" "$1" > /dev/null 2>&1 &) &> /dev/null
-}
-
-# Opens JetBrains Rider
-rider() {
-    ("${HOME}/.local/share/JetBrains/Toolbox/apps/rider/bin/rider.sh" "$1" > /dev/null 2>&1 &) &> /dev/null
-}
