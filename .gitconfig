@@ -1,0 +1,23 @@
+[user]
+    name = hermannm
+    email = hermann.morkrid@gmail.com
+
+[core]
+    editor = nano
+
+[init]
+    defaultbranch = main
+
+[pull]
+    rebase = false
+
+# Sets up GPG signing of commits and tags.
+# To set the signing key: sudo git config --system user.signingkey [KEY-ID]
+[gpg]
+    program = "/opt/homebrew/bin/gpg"
+[commit]
+    gpgsign = true
+[tag]
+    gpgsign = true
+[credential]
+    helper = /usr/local/share/gcm-core/git-credential-manager
