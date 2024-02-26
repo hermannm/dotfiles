@@ -1,6 +1,8 @@
 # Aliases ls to always color directories
 alias ls='ls --color=auto'
 
+alias dev='cd "${HOME}/dev"'
+
 # Short-form for Docker Compose. Overwrites built-in dc command
 alias dc='docker compose'
 
