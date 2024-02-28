@@ -47,9 +47,9 @@ if [ -f "${HOME}/zsh/keybindings" ]; then
     source "${HOME}/zsh/keybindings"
 fi
 
-# Loads secrets
-if [ -f "${HOME}/zsh/secrets" ]; then
-    source "${HOME}/zsh/secrets"
+# Loads private config, not shared in Git
+if [ -f "${HOME}/zsh/private" ]; then
+    source "${HOME}/zsh/private"
 fi
 
 # Loads zsh-autosuggestions plugin
