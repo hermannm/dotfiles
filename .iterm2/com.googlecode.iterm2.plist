@@ -6,6 +6,8 @@
 	<true/>
 	<key>AllowTabbarInTitlebarAccessoryBigSur</key>
 	<false/>
+	<key>AlternateMouseScroll</key>
+	<true/>
 	<key>ColoredSelectedTabOutlineStrength</key>
 	<real>0.5</real>
 	<key>CompactEdgeDragSize</key>
