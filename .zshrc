@@ -48,8 +48,8 @@ if [ -f "${HOME}/zsh/keybindings" ]; then
 fi
 
 # Loads secrets
-if [ -f "${HOME}/zsh/secrets" ]; then
-    source "${HOME}/zsh/secrets"
+if [ -f "${HOME}/zsh/private" ]; then
+    source "${HOME}/zsh/private"
 fi
 
 # Loads zsh-autosuggestions plugin
