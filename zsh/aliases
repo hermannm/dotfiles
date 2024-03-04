@@ -28,6 +28,10 @@ gc() {
     git commit "$@"
     gs
 }
+gf() {
+    git fetch
+    gs
+}
 
 # Aliases for git management of dotfiles
 alias df-g='git --git-dir="${HOME}/dotfiles" --work-tree="${HOME}"'
