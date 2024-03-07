@@ -3,7 +3,7 @@
     email = hermann.morkrid@gmail.com
 
 [core]
-    editor = nano
+    editor = micro
 
 [init]
     defaultbranch = main
