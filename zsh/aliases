@@ -1,5 +1,5 @@
 # Aliases ls to always color directories
-alias ls='ls --color=auto'
+alias ls='ls -G'
 
 alias dev='cd "${HOME}/dev"'
 
