@@ -7,6 +7,7 @@
 
 [init]
     defaultbranch = main
+    templatedir = "~/.git-template"
 
 [pull]
     rebase = false
