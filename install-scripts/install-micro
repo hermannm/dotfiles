@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+curl https://getmic.ro | bash
+mkdir -p ~/bin
+mv ./micro ~/bin/
