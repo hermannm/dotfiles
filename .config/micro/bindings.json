@@ -1,7 +1,7 @@
 {
   "Alt-/": "lua:comment.comment",
   "CtrlUnderscore": "lua:comment.comment",
-  "Ctrl-d": "Quit",
+  "Esc": "Quit",
   "Ctrl-s": "Save,Quit",
   "Ctrl-Shift-s": "Save",
   "Ctrl-a": "StartOfLine",
