@@ -9,8 +9,8 @@ if [ -d "${HOME}/apps" ] ; then
     PATH="${HOME}/apps:${PATH}"
 fi
 
-# Sets Nano as default editor
-export EDITOR=nano
+# Sets Micro as default editor
+export EDITOR=micro
 export VISUAL="${EDITOR}"
 
 # Sets up GPG signing
