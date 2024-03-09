@@ -1,0 +1,19 @@
+[/]
+default='cfbd91fb-8ad8-4004-9989-d182a6660f60'
+list=['7c672611-db8d-4318-ad24-5bf4000288fd', 'cfbd91fb-8ad8-4004-9989-d182a6660f60']
+
+[:7c672611-db8d-4318-ad24-5bf4000288fd]
+visible-name='default'
+
+[:cfbd91fb-8ad8-4004-9989-d182a6660f60]
+background-color='rgb(40,40,40)'
+cursor-colors-set=false
+default-size-columns=100
+default-size-rows=24
+foreground-color='rgb(235,219,178)'
+highlight-colors-set=false
+palette=['rgb(40,40,40)', 'rgb(251,73,52)', 'rgb(184,187,38)', 'rgb(250,189,47)', 'rgb(131,164,152)', 'rgb(211,134,155)', 'rgb(142,192,124)', 'rgb(168,153,132)', 'rgb(146,131,116)', 'rgb(251,73,52)', 'rgb(184,187,38)', 'rgb(250,189,47)', 'rgb(131,164,152)', 'rgb(211,134,155)', 'rgb(142,192,124)', 'rgb(235,219,178)']
+use-system-font=true
+use-theme-colors=false
+use-theme-transparency=true
+visible-name='gruvbox'
