@@ -1,9 +1,14 @@
 {
   "Alt-/": "lua:comment.comment",
   "CtrlUnderscore": "lua:comment.comment",
+  "Esc": "Quit",
   "Ctrl-s": "Save,Quit",
   "Ctrl-Shift-s": "Save",
+  "OldBackspace": "DeleteWordLeft",
   "Ctrl-a": "StartOfLine",
   "Ctrl-e": "EndOfLine",
-  "Ctrl-m": "CommandMode"
+  "Ctrl-d": "CommandMode",
+  "Ctrl-q": "None",
+  "F4": "None",
+  "F10": "None"
 }
