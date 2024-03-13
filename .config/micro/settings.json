@@ -1,4 +1,5 @@
 {
+    "autoclose": false,
     "colorcolumn": 72,
     "colorscheme": "gruvbox-plain",
     "infobar": false,
