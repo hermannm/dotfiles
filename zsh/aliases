@@ -24,7 +24,7 @@ alias gps='git push'
 alias gpsu='git push -u origin $(git-current-branch)'
 alias grh='git reset --hard origin/$(git-current-branch)'
 alias grs='git reset --soft HEAD~1'
-alias gs='git -c color.ui=always status -sb | ${HOME}/util-scripts/sort-git-status.py'
+alias gs='gadd --status'
 gc() {
     git commit "$@"
     gs
