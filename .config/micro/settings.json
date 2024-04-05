@@ -3,6 +3,7 @@
     "colorcolumn": 72,
     "colorscheme": "gruvbox-plain",
     "infobar": false,
+    "matchbrace": false,
     "softwrap": true,
     "statusformatl": "$(filename)$(modified)",
     "statusformatr": "$(bind:Save,Quit): Save+Quit | $(bind:Quit): Quit"
