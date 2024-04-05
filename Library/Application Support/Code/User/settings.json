@@ -1,7 +1,7 @@
 {
   "editor.formatOnSave": true,
   "editor.rulers": [100],
-  "editor.inlayHints.enabled": "on",
+  "editor.inlayHints.enabled": "off",
   "editor.minimap.enabled": false,
   "editor.colorDecorators": false,
   "editor.acceptSuggestionOnEnter": "off",
@@ -9,6 +9,7 @@
   "editor.suggestSelection": "first",
   "editor.semanticHighlighting.enabled": true,
   "editor.accessibilitySupport": "off",
+  "editor.stickyScroll.enabled": false,
   "explorer.compactFolders": false,
   "security.workspace.trust.untrustedFiles": "open",
   "workbench.startupEditor": "none",
@@ -290,5 +291,6 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
+  "rust-analyzer.lens.enable": false,
   "workbench.colorTheme": "gruvbox-plain-cold"
 }
