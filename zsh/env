@@ -49,3 +49,8 @@ eval "$(fnm env --use-on-cd)"
 if [ -f "${HOME}/dev/gadd/target/release/gadd" ]; then
     export PATH="${HOME}/dev/gadd/target/release:${PATH}"
 fi
+
+# Loads util scripts
+if [ -d "${HOME}/util-scripts/target/release" ]; then
+    export PATH="${HOME}/util-scripts/target/release:${PATH}"
+fi
