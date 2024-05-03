@@ -1,0 +1,17 @@
+[package]
+name = "util-scripts"
+version = "0.1.0"
+edition = "2021"
+authors = ["hermannm"]
+
+[[bin]]
+name = "gen-uuid"
+path = "gen_uuid.rs"
+
+[[bin]]
+name = "gen-timestamp"
+path = "gen_timestamp.rs"
+
+[dependencies]
+chrono = "0.4.38"
+uuid = { version = "1.8.0", features = ["v4"] }

@@ -52,6 +52,7 @@ export PATH="${HOME}/.local/share/fnm:${PATH}"
 eval "$(fnm env --use-on-cd)"
 
 # Loads gadd command-line utility for git
-if [ -f "${HOME}/dev/gadd/target/release/gadd" ]; then
-    export PATH="${HOME}/dev/gadd/target/release:${PATH}"
-fi
+export PATH="${HOME}/dev/gadd/target/release:${PATH}"
+
+# Loads Rust utility scripts
+export PATH="${HOME}/util-scripts/target/release:${PATH}"
