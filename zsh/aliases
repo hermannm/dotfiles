@@ -3,6 +3,18 @@ alias ls='ls -G'
 
 alias dev='cd "${HOME}/dev"'
 
+ij() {
+    cd "$@"
+    git pull
+    idea .
+}
+
+vs() {
+    cd "$@"
+    git pull
+    code .
+}
+
 # Short-form for Docker Compose. Overwrites built-in dc command
 alias dc='docker compose'
 
@@ -25,7 +37,7 @@ alias gpsu='git push -u origin $(git-current-branch)'
 alias grh='git reset --hard origin/$(git-current-branch)'
 alias grs='git reset --soft HEAD~1 && git restore --staged .'
 alias gs='gadd --status'
-alias gst='git stash'
+alias gst='git stash --include-untracked'
 gc() {
     git commit "$@"
     gs
