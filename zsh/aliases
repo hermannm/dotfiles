@@ -23,9 +23,8 @@ alias gplom='git pull origin $(git-main-branch)'
 alias gps='git push'
 alias gpsu='git push -u origin $(git-current-branch)'
 alias grh='git reset --hard origin/$(git-current-branch)'
-alias grs='git reset --soft HEAD~1'
+alias grs='git reset --soft HEAD~1 && git restore --staged .'
 alias gs='gadd --status'
-alias gst='git stash'
 gc() {
     git commit "$@"
     gs
@@ -33,6 +32,13 @@ gc() {
 gf() {
     git fetch
     gs
+}
+gst() {
+    if [ "$#" -eq 0 ]; then
+        git stash --include-untracked
+    else
+        git stash "$@"
+    fi
 }
 
 # Aliases for git management of dotfiles
