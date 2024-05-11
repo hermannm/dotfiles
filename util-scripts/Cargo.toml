@@ -16,7 +16,14 @@ path = "gen_timestamp.rs"
 name = "prepend-newline"
 path = "prepend_newline.rs"
 
+[[bin]]
+name = "reinit-git-hooks"
+path = "reinit_git_hooks.rs"
+
 [dependencies]
 anyhow = "1.0.83"
 chrono = "0.4.38"
+tracing = "0.1.40"
+tracing-subscriber = "0.3.18"
 uuid = { version = "1.8.0", features = ["v4"] }
+walkdir = "2.5.0"
