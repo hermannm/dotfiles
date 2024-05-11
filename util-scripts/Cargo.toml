@@ -12,6 +12,11 @@ path = "gen_uuid.rs"
 name = "gen-timestamp"
 path = "gen_timestamp.rs"
 
+[[bin]]
+name = "prepend-newline"
+path = "prepend_newline.rs"
+
 [dependencies]
+anyhow = "1.0.83"
 chrono = "0.4.38"
 uuid = { version = "1.8.0", features = ["v4"] }

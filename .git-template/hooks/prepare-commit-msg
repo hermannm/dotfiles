@@ -1,4 +1,1 @@
-#!/bin/sh
-
-# Uses sed to add an extra newline to the beginning of the commit message file ($1) in-place (-i)
-sed -i '1i\\' $1
+/home/hermannm/util-scripts/target/release/prepend-newline
