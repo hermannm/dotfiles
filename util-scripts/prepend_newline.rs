@@ -1,25 +1,29 @@
 use std::{
-    env::args,
     fs::OpenOptions,
     io::{Read, Seek, SeekFrom, Write},
 };
 
 use anyhow::{Context, Result};
+use clap::Parser;
 
 /// Prepends the contents of a given file with a newline IF it already starts with a newline.
 ///
 /// Used to add an extra newline to the start of the Git commit message template.
+#[derive(Parser, Debug)]
+#[command(about, trailing_var_arg = true, allow_hyphen_values = true)]
+struct Args {
+    /// Path of the file to prepend a newline to.
+    #[arg()]
+    file_path: String,
+}
+
 fn main() -> Result<()> {
-    let file_path = args().nth(1).context(
-        "Expected file path argument\
-        \n\n\
-        Usage: prepend-newline <filepath>",
-    )?;
+    let args = Args::parse();
 
     let mut file = OpenOptions::new()
         .read(true)
         .write(true)
-        .open(file_path)
+        .open(args.file_path)
         .context("Failed to open file")?;
 
     const DEFAULT_COMMIT_MESSAGE_FILE_SIZE: usize = 437;

@@ -1,30 +1,36 @@
 use std::{
-    env::{args, current_dir, set_current_dir},
+    env::{current_dir, set_current_dir},
     ffi::OsStr,
     fs::remove_file,
     process::{Command, Stdio},
 };
 
 use anyhow::{bail, Context, Result};
+use clap::Parser;
 use tracing::info;
 use walkdir::WalkDir;
 
-/** Reinitializes all Git hooks in repositories under the given root path. */
+/// Reinitializes all Git hooks in repositories under the given root directory.
+#[derive(Parser, Debug)]
+#[command(about)]
+struct Args {
+    #[arg()]
+    root_dir: String,
+}
+
 fn main() -> Result<()> {
     tracing_subscriber::fmt()
         .without_time()
         .with_target(false)
         .init();
 
-    let root_dir = args().nth(1).context(
-        "Expected root dir argument\
-        \n\n\
-        Usage: reinit-git-hooks <root_dir>",
-    )?;
-
+    let args = Args::parse();
     let current_dir = current_dir().context("Failed to get current dir")?;
 
-    for entry in WalkDir::new(root_dir).into_iter().filter_map(|e| e.ok()) {
+    for entry in WalkDir::new(args.root_dir)
+        .into_iter()
+        .filter_map(|e| e.ok())
+    {
         if !entry.file_type().is_dir() || entry.file_name() != ".git" {
             continue;
         }
