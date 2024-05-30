@@ -8,18 +8,14 @@ ij() {
     git pull
     idea .
 }
-
 vs() {
     cd "$@"
     git pull
     code .
 }
 
-# Short-form for Docker Compose. Overwrites built-in dc command
 alias dc='docker compose'
-
-# Short-form for Clang C compiler
-alias clang='clang-14'
+alias nr='npm run'
 
 # Aliases for common git operations
 alias g='git'
