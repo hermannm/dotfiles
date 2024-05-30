@@ -20,11 +20,16 @@ path = "prepend_newline.rs"
 name = "reinit-git-hooks"
 path = "reinit_git_hooks.rs"
 
+[[bin]]
+name = "url-encode"
+path = "url_encode.rs"
+
 [dependencies]
 anyhow = "1.0.83"
 chrono = "0.4.38"
 clap = { version = "4.5.4", features = ["derive"] }
 tracing = "0.1.40"
 tracing-subscriber = "0.3.18"
+url = "2.5.0"
 uuid = { version = "1.8.0", features = ["v4"] }
 walkdir = "2.5.0"
