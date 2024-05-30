@@ -4,14 +4,10 @@ alias ls='ls -G'
 alias dev='cd "${HOME}/dev"'
 
 ij() {
-    cd "$@"
-    git pull
-    idea .
+    cd "$@" && git pull && idea .
 }
 vs() {
-    cd "$@"
-    git pull
-    code .
+    cd "$@" && git pull && code .
 }
 
 alias dc='docker compose'
