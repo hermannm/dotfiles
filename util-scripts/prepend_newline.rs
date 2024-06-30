@@ -10,7 +10,12 @@ use clap::Parser;
 ///
 /// Used to add an extra newline to the start of the Git commit message template.
 #[derive(Parser, Debug)]
-#[command(about, trailing_var_arg = true, allow_hyphen_values = true)]
+#[command(
+    about,
+    trailing_var_arg = true,
+    allow_hyphen_values = true,
+    ignore_errors = true
+)]
 struct Args {
     /// Path of the file to prepend a newline to.
     #[arg()]
