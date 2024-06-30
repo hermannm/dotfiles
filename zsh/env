@@ -49,4 +49,4 @@ eval "$(fnm env --use-on-cd)"
 export PATH="${HOME}/dev/gadd/target/release:${PATH}"
 
 # Loads util scripts
-export PATH="${HOME}/util-scripts/target/release:${PATH}"
+export PATH="${HOME}/dev/scripts/target/release:${PATH}"
