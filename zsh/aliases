@@ -52,7 +52,7 @@ alias df-gd='df-g diff'
 alias df-glg='df-g log --oneline'
 alias df-gpl='df-g pull'
 alias df-gps='df-g push'
-alias df-gs='df-g -c color.ui=always status -sb | ${HOME}/dev/scripts/sort-git-status.py'
+alias df-gs='df-g -c color.ui=always status -sb | ${HOME}/scripts/sort-git-status.py'
 alias df-ls='df-g ls-tree main -r --name-only'
 df-ga() {
     df-g add "$@"
