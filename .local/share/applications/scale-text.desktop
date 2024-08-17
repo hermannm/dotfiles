@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=scale-text
+Exec=/home/hermannm/scripts/scale-text.sh
+Icon=/home/hermannm/drive/dev/computer/ubuntu/apps/scale-text.png
