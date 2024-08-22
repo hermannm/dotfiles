@@ -10,7 +10,7 @@
     templatedir = "~/.git-template"
 
 [pull]
-    rebase = false
+    rebase = true
 
 # Sets up GPG signing of commits and tags.
 # To set the signing key: sudo git config --system user.signingkey [KEY-ID]
