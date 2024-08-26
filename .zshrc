@@ -23,6 +23,7 @@ setopt histignorealldups sharehistory
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE="${HOME}/.zsh_history"
+setopt HIST_IGNORE_SPACE # Excludes commands prefixed by space from history
 
 # Only navigate to ~/dev if we're in ~ on startup; otherwise we're opening same dir as previous tab
 if [[ $PWD == $HOME ]]; then
