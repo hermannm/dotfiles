@@ -3,13 +3,6 @@ alias ls='ls -G'
 
 alias dev='cd "${HOME}/dev"'
 
-ij() {
-    cd "$@" && git pull --ff-only && idea .
-}
-vs() {
-    cd "$@" && git pull --ff-only && code .
-}
-
 alias dc='docker compose'
 alias nr='npm run'
 
@@ -92,6 +85,13 @@ git-main-branch() {
 # Opens IntelliJ
 idea() {
     ("/Applications/IntelliJ IDEA.app/Contents/MacOS/idea" "$1" > /dev/null 2>&1 &) &> /dev/null
+}
+
+ij() {
+    cd "$@" && git pull --ff-only && idea .
+}
+vs() {
+    cd "$@" && git pull --ff-only && code .
 }
 
 # Prints out the process using the given port
