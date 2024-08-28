@@ -44,6 +44,14 @@ gst() {
         git stash "$@"
     fi
 }
+gpsf() {
+    if [ "$(git-current-branch)" = "$(git-main-branch)" ]; then
+        echo "Tried to force-push to main branch. Are you sure you want to do this?"
+        return
+    fi
+
+    git push --force-with-lease "$@"
+}
 
 # Aliases for git management of dotfiles
 alias df-g='git --git-dir="${HOME}/dotfiles" --work-tree="${HOME}"'
