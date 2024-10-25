@@ -5,6 +5,7 @@ alias dev='cd "${HOME}/dev"'
 
 alias dc='docker compose'
 alias nr='npm run'
+alias rgf='rg --files | rg'
 
 # Aliases for common git operations
 alias g='git'
