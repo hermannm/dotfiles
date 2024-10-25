@@ -8,6 +8,8 @@
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.suggestSelection": "first",
   "editor.semanticHighlighting.enabled": true,
+  "editor.accessibilitySupport": "off",
+  "editor.stickyScroll.enabled": false,
   "explorer.compactFolders": false,
   "security.workspace.trust.untrustedFiles": "open",
   "workbench.startupEditor": "none",
@@ -77,6 +79,7 @@
   "go.enableCodeLens": {
     "runtest": false
   },
+  "go.inlayHints.parameterNames": true,
   "gopls": {
     "ui.semanticTokens": true,
     "ui.noSemanticString": true,
@@ -95,6 +98,18 @@
   "rust-analyzer.inlayHints.bindingModeHints.enable": true,
   "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "always",
   "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.lens.enable": false,
+  "rust-analyzer.lens.run.enable": false,
+  // Removes unused imports on save
+  "rust-analyzer.check.overrideCommand": [
+    "cargo",
+    "clippy",
+    "--fix",
+    "--workspace",
+    "--message-format=json",
+    "--all-targets",
+    "--allow-dirty"
+  ],
 
   // HTML/JavaScript/TypeScript
   "html.autoClosingTags": false,
@@ -102,6 +117,10 @@
   "typescript.autoClosingTags": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "tailwindCSS.includeLanguages": {
+    "rust": "html",
+    "*.rs": "html"
+  },
 
   // Python
   "[python]": {
@@ -200,7 +219,7 @@
   ],
 
   // ErrorLens extension settings
-  "errorLens.enabled": false,
+  "errorLens.enabled": true,
   "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
 
   // GitLens extension settings
@@ -271,7 +290,8 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "files.associations": {
     "*.svg": "html",
-    "*.html.tmpl": "html"
+    "*.html.tmpl": "html",
+    "*.rs": "rust"
   },
   "githubPullRequests.pullBranch": "never",
   "workbench.editor.enablePreview": false,
@@ -289,5 +309,5 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
-  "workbench.colorTheme": "gruvbox-plain-warm"
+  "workbench.colorTheme": "gruvbox-plain-cold"
 }
