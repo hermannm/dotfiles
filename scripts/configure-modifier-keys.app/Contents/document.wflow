@@ -59,11 +59,32 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>hidutil property --set '{"UserKeyMapping":
-    [{"HIDKeyboardModifierMappingSrc":0x7000000e7,
-      "HIDKeyboardModifierMappingDst":0x7000000e6},
-     {"HIDKeyboardModifierMappingSrc":0x7000000e6,
-      "HIDKeyboardModifierMappingDst":0x7000000e7}]
+					<string># How to make into .app to launch at startup: https://stackoverflow.com/a/6445525
+#
+# First 2 entries:
+# - Switch Right Command (0x7000000e7) and Right Option (0x7000000e6)
+#
+# Last 2 entries:
+# - Switch Left Shift (0x7000000e1) and Caps Lock (0x700000039)
+hidutil property --set '{
+  "UserKeyMapping": [
+    {
+      "HIDKeyboardModifierMappingSrc":0x7000000e7,
+      "HIDKeyboardModifierMappingDst":0x7000000e6
+    },
+    {
+      "HIDKeyboardModifierMappingSrc":0x7000000e6,
+      "HIDKeyboardModifierMappingDst":0x7000000e7
+    },
+    {
+      "HIDKeyboardModifierMappingSrc":0x7000000e1,
+      "HIDKeyboardModifierMappingDst":0x700000039
+    },
+    {
+      "HIDKeyboardModifierMappingSrc":0x700000039,
+      "HIDKeyboardModifierMappingDst":0x7000000e1
+    }
+  ]
 }'</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
@@ -89,7 +110,7 @@
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>9D1E5A54-B080-413A-BB05-A076F2A5316A</string>
+				<string>BF8B942F-5083-4EDD-ACE0-68F875B9C189</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -99,9 +120,9 @@
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>86C1FB65-F6BF-42AD-833E-A80F407CF43C</string>
+				<string>C3A9B43D-2DB1-408F-B73B-F212CD1D61C4</string>
 				<key>UUID</key>
-				<string>DCEE5315-0EF5-421A-BEF0-4F3B776AE478</string>
+				<string>33A70063-72C5-45FC-80E1-02ADAECD5C5A</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
