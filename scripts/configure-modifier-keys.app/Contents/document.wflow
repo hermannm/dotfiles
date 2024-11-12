@@ -110,7 +110,7 @@ hidutil property --set '{
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>BF8B942F-5083-4EDD-ACE0-68F875B9C189</string>
+				<string>FEFCBC26-79F5-4499-90CE-33DAFF067972</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -120,9 +120,9 @@ hidutil property --set '{
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>C3A9B43D-2DB1-408F-B73B-F212CD1D61C4</string>
+				<string>6A1BB6BD-C833-4745-9A8C-F6F441D973E0</string>
 				<key>UUID</key>
-				<string>33A70063-72C5-45FC-80E1-02ADAECD5C5A</string>
+				<string>6257DBEC-80AD-462D-BFFD-4EA560DD9293</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
