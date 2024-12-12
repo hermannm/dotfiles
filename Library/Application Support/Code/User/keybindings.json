@@ -1,5 +1,21 @@
 [
   {
+    "key": "cmd+t",
+    "command": "-workbench.action.showAllSymbols"
+  },
+  {
+    "key": "cmd+t",
+    "command": "settings.cycle.inlayHints"
+  },
+  {
+    "key": "cmd+g",
+    "command": "-workbench.action.gotoLine"
+  },
+  {
+    "key": "cmd+g",
+    "command": "settings.cycle.errorLens"
+  },
+  {
     "key": "shift+cmd+s",
     "command": "workbench.action.files.saveWithoutFormatting"
   },

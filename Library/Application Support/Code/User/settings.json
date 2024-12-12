@@ -79,6 +79,7 @@
   "go.enableCodeLens": {
     "runtest": false
   },
+  "go.inlayHints.parameterNames": true,
   "gopls": {
     "ui.semanticTokens": true,
     "ui.noSemanticString": true,
@@ -97,6 +98,21 @@
   "rust-analyzer.inlayHints.bindingModeHints.enable": true,
   "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "always",
   "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.lens.enable": false,
+  "rust-analyzer.lens.run.enable": false,
+  // Removes unused imports on save
+  "rust-analyzer.check.overrideCommand": [
+    "cargo",
+    "clippy",
+    "--fix",
+    "--workspace",
+    "--message-format=json",
+    "--all-targets",
+    "--allow-dirty"
+  ],
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
 
   // HTML/JavaScript/TypeScript
   "html.autoClosingTags": false,
@@ -104,6 +120,10 @@
   "typescript.autoClosingTags": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "tailwindCSS.includeLanguages": {
+    "rust": "html",
+    "*.rs": "html"
+  },
 
   // Python
   "[python]": {
@@ -130,6 +150,7 @@
 
   // Markdown/LaTeX
   "markdown.extension.italic.indicator": "_",
+  "markdown.extension.toc.updateOnSave": false,
   "markdown.preview.scrollEditorWithPreview": false,
   "markdown-pdf.displayHeaderFooter": false,
   "markdown-pdf.highlight": false,
@@ -273,7 +294,8 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "files.associations": {
     "*.svg": "html",
-    "*.html.tmpl": "html"
+    "*.html.tmpl": "html",
+    "*.rs": "rust"
   },
   "githubPullRequests.pullBranch": "never",
   "workbench.editor.enablePreview": false,
@@ -291,6 +313,5 @@
     "errorLens.infoBackground": "#fff0",
     "errorLens.hintBackground": "#fff0"
   },
-  "rust-analyzer.lens.enable": false,
   "workbench.colorTheme": "gruvbox-plain-cold"
 }
