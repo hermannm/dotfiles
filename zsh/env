@@ -50,3 +50,9 @@ export PATH="${HOME}/dev/gadd/target/release:${PATH}"
 
 # Loads util scripts
 export PATH="${HOME}/dev/scripts/target/release:${PATH}"
+
+# Must be at the end of the file for SDKMAN to work
+export SDKMAN_DIR="${HOME}/.sdkman"
+if [ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ] ; then
+    source "${HOME}/.sdkman/bin/sdkman-init.sh"
+fi
