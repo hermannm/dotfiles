@@ -25,7 +25,7 @@ source "${HOME}/.cargo/env"
 # Configures JDK and Maven for Java
 export JAVA_HOME="/usr/lib/jvm/java-17-amazon-corretto"
 export PATH="${JAVA_HOME}/bin:${PATH}"
-export M2_HOME="/opt/apache-maven-3.9.2"
+export M2_HOME="${HOME}/maven"
 export PATH="${M2_HOME}/bin:${PATH}"
 
 # Configures .NET
